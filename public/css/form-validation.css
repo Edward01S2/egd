@@ -1,0 +1,66 @@
+.container {
+    max-width: 960px;
+  }
+  
+  .border-top { border-top: 1px solid #e5e5e5; }
+  .border-bottom { border-bottom: 1px solid #e5e5e5; }
+  .border-top-gray { border-top-color: #adb5bd; }
+  
+  .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+  
+  .lh-condensed { line-height: 1.25; }
+
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 175px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+.signature-pad {
+    width:100%;
+    height:175px;
+    background-color: white;
+    border: 1px solid lightgrey;
+}
+
+.btn-sig {
+    z-index: 99;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.sig-text {
+    font-size: 12px;
+}
+
+#clear-btn {
+  display: none;
+}
+
+.table-responsive {
+  display: table;
+}
+
+.force-break {
+    page-break-after: always;
+}
+
+@media print {
+
+    .nav-layout {
+        display: none !important;
+    }
+
+    .footer-layout {
+        display: none;
+    }
+
+    .print-head {
+        margin-top: 25px;
+    }
+}
