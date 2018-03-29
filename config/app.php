@@ -150,7 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Spatie\LaravelImageOptimizer\ImageOptimizerServiceProvider::class,
         /*
          * Application Service Providers...
          */

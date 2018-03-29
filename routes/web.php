@@ -20,6 +20,12 @@ Route::post('/tickets', 'TicketsController@store');
 Route::get('/tickets/{ticket}', 'TicketsController@show');
 //Route::get('/tickets/{ticket}/edit', 'TicketsController@edit');
 
+Route::get('/intrusion', 'IntrusionController@index');
+Route::get('/intrusion/create', 'IntrusionController@create');
+Route::post('/intrusion/create', 'IntrusionController@create');
+Route::post('/intrusion', 'IntrusionController@store');
+Route::get('/intrusion/{ticket}', 'IntrusionController@show');
+
 Route::get('/about', function () {
     return view('about');
 });

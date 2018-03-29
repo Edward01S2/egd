@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Spatie\Browsershot\Browsershot;
 use App\Mail\Vegetation;
 use Illuminate\Support\Facades\Storage;
-//use ImageOptimizer;
+use ImageOptimizer;
 
 
 class TicketServiceProvider extends ServiceProvider
@@ -21,22 +21,23 @@ class TicketServiceProvider extends ServiceProvider
     {
         Ticket::created(function($ticket) {
 
-            // $store = '/public/' . $ticket->ticket_num . '/';
+            $store = '/public/' . $ticket->ticket_num . '/';
             // //dd($path);
             
             // //dd($path);
             // //$files = Storage::files($store);
             // //dd($files);
-            // if($files = Storage::files($store)) {
-            //     //dd($files);
-            //     foreach($files as $key ) {
-            //         //dd$key;
-            //         $path = storage_path('app/' . $key);
-            //         //$path = ('/storage/app/' . $key);
-            //         //dd($path);
-            //         ImageOptimizer::optimize($path);
-            //     }
-            // }
+            if($files = Storage::files($store)) {
+                //dd($files);
+                foreach($files as $key ) {
+                    //dd$key;
+                    $path = storage_path('app/' . $key);
+                    //$path = ('/storage/app/' . $key);
+                    //dd($path);
+                    ImageOptimizer::optimize($path);
+                    //app(Spatie\ImageOptimizer\OptimizerChain::class)->optimize($path);
+                }
+            }
 
             $path = storage_path('app/public/' . $ticket->ticket_num . '/ticket.pdf');
             $url = url('/tickets/' . $ticket->ticket_num);
@@ -56,7 +57,7 @@ class TicketServiceProvider extends ServiceProvider
                 \Mail::send('emails.vegetation', [], function($m) use ($path) {
                     $m->to('edward.01s2@gmail.com');
                     $m->subject('Send Herbicide');
-                    //$m ->attach($path);
+                    $m ->attach($path);
                 });
             }
 

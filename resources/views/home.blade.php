@@ -36,7 +36,7 @@
                                         <option value="/tickets/create">Training</option>
                                         <option value="/tickets/create">Add-on Quote</option>
                                         <option value="/tickets/create">IST</option>
-                                        <option value="/tickets/create">Intrusion</option>
+                                        <option value="/intrusion/create">Intrusion</option>
                                         <option value="/tickets/create">Camera</option>
                                     </select>
                                 </div>    

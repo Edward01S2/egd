@@ -139,6 +139,7 @@ class TicketsController extends Controller
         $files = request('files');
         if(!empty($files)) {
             for($i = 0; $i < count($files); $i++) {
+                
                 Storage::put($dest, $files[$i]);
             }
         }
