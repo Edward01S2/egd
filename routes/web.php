@@ -15,6 +15,7 @@ use App\Ticket;
 
 Route::get('/tickets', 'TicketsController@index');
 Route::get('/tickets/create', 'TicketsController@create');
+Route::post('/tickets/create', 'TicketsController@create');
 Route::post('/tickets', 'TicketsController@store');
 Route::get('/tickets/{ticket}', 'TicketsController@show');
 //Route::get('/tickets/{ticket}/edit', 'TicketsController@edit');
@@ -25,4 +26,5 @@ Route::get('/about', function () {
 
 Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');

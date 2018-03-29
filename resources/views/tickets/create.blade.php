@@ -18,7 +18,7 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="ticket_num">Ticket #</label>
-                    <input type="text" class="form-control" name="ticket_num" placeholder="" value="" >
+                <input type="text" class="form-control" name="ticket_num" placeholder="" value="{{ $ticket_num or ' ' }}" >
                     <div class="invalid-feedback">
                         Ticket # is required.
                     </div>
@@ -34,7 +34,7 @@
 
                 <div class="mb-3">
                     <label for="serv_tech">Service Tech</label>
-                    <input type="text" class="form-control" name="serv_tech" placeholder="" value="" >
+                    <input type="text" class="form-control" name="serv_tech" placeholder="" value="{{ Auth::user()->name }}" disabled>
                     <div class="invalid-feedback">
     
                     </div>

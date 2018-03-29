@@ -658,27 +658,6 @@
 
         </div>
 
-        {{--  <div id="img-upload" class="row mb-3 img-upload">
-
-            <div class="card col-12">
-                <div class="card-body">
-                    <h3>Please upload images</h3>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-                            <input name="files[]" class="custom-file-input" type="file" id="files" multiple="multiple" />
-                            <label class="custom-file-label" for="files">Choose files</label>
-                        </div>
-                    </div>
-                    <output id="list"></output>
-                    <div id="clear-btn-container" class="d-flex flex-row-reverse">
-                        <button type="button" id="clear-btn" class="btn btn-danger">Clear</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>  --}}
-
         <div id="sig-block" class="row mb-3 force-break">
 
             <div class="col-6">

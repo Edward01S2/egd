@@ -8,8 +8,14 @@ use File;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Browsershot\Browsershot;
 
+
 class TicketsController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('auth');
+    }
+
     function arrays() {
         $zone_options = array("Choose Zone", "Motion", "Front Door", "Door Contact", "Mag Lock", "Fence 1", "Fence 2", "Fence 3", "Fence 4", "Fence 5", "Fence 6", "Keyswitch Relay 1",
         "Keyswitch Relay 2", "Keyswitch Relay 3", "Keyswitch Relay 4", "Keyswitch Relay 5", "Gate 1", "Gate 2", "Siren Tamper", "OD Box Tamper", "APS Tamper");
@@ -72,9 +78,14 @@ class TicketsController extends Controller
 
     public function create() {
 
-       $sel_options = $this->arrays();
+        $sel_options = $this->arrays();
 
-        return view('tickets.create', compact('sel_options'));
+        if ($ticket_num = request('ticket_num')) {
+            return view('tickets.create', compact('sel_options', 'ticket_num'));
+        }
+        else {
+            return view('tickets.create', compact('sel_options'));
+        }
     }
 
     public function store() {
