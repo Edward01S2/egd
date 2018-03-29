@@ -7,6 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use Spatie\Browsershot\Browsershot;
 use App\Mail\Vegetation;
 use Illuminate\Support\Facades\Storage;
+//use ImageOptimizer;
+
 
 class TicketServiceProvider extends ServiceProvider
 {
@@ -18,24 +20,43 @@ class TicketServiceProvider extends ServiceProvider
     public function boot()
     {
         Ticket::created(function($ticket) {
+
+            // $store = '/public/' . $ticket->ticket_num . '/';
+            // //dd($path);
+            
+            // //dd($path);
+            // //$files = Storage::files($store);
+            // //dd($files);
+            // if($files = Storage::files($store)) {
+            //     //dd($files);
+            //     foreach($files as $key ) {
+            //         //dd$key;
+            //         $path = storage_path('app/' . $key);
+            //         //$path = ('/storage/app/' . $key);
+            //         //dd($path);
+            //         ImageOptimizer::optimize($path);
+            //     }
+            // }
+
             $path = storage_path('app/public/' . $ticket->ticket_num . '/ticket.pdf');
             $url = url('/tickets/' . $ticket->ticket_num);
             //dd($url);
-            Browsershot::url($url)->emulateMedia('print')->savePdf($path);
+            Browsershot::url($url)
+                ->emulateMedia('print')
+                ->save($path);
 
             //Automatic emails
             //Vegetation select starts with 0 - high
-            //return Storage::download('public/' . $ticket->ticket_num . '/ticket.pdf');
 
             if($ticket->vegetation === "0") {
                 //$attach = Storage::url('public/' . $ticket->ticket_num . '/ticket.pdf');
                 //dd($attach);
                 $path = storage_path('app/public/' . $ticket->ticket_num . '/ticket.pdf');
-                $user = Auth::user();
-                \Mail::send('emails.vegetation', [], function($m) use ($ticket, $user) {
-                    $m->to($user->email);
+                //$user = Auth::user();
+                \Mail::send('emails.vegetation', [], function($m) use ($path) {
+                    $m->to('edward.01s2@gmail.com');
                     $m->subject('Send Herbicide');
-                    $m ->attach(storage_path('app/public/' . $ticket->ticket_num . '/ticket.pdf'));
+                    //$m ->attach($path);
                 });
             }
 

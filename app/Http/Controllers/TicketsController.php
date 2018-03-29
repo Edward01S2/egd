@@ -7,13 +7,14 @@ use View;
 use File;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Browsershot\Browsershot;
+use ImageOptimizer;
 
 
 class TicketsController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth', ['except' => 'show']);
     }
 
     function arrays() {
@@ -60,7 +61,7 @@ class TicketsController extends Controller
             }
 
             $len = count($uploads);
-            if($len = 1) {
+            if($len == 1) {
                 $upl_one = array_slice($uploads, 0, round($len / 2));
                 $upl_two = [];
             }
@@ -141,7 +142,20 @@ class TicketsController extends Controller
                 Storage::put($dest, $files[$i]);
             }
         }
-        
+
+        //Optimize images
+        //$dest = '/public/' . $ticket->ticket_num . '/';
+        // $path = '/' . request('ticket_num') . '/';
+        // //dd($path);
+        // $files = Storage::files($path);
+        // dd($files);
+        // if($files = Storage::files($path)) {
+        //     dd($files);
+        //     foreach($files as $key ) {
+        //         //dd$key;
+        //         //ImageOptimizer::optimize($key);
+        //     }
+        // }
 
         Ticket::create([
             'ticket_num' => request('ticket_num'),
