@@ -2,9 +2,15 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class PST extends Model
 {
-    //
+    public $table = "pst";
+
+    protected $casts = [
+        'check' => 'array',
+    ];
+
+    public function getRouteKeyName() {
+        return 'ticket_num';
+    }
 }

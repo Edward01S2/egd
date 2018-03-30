@@ -31,13 +31,11 @@
                                 <div class="col-sm-8">
                                     <select id="ticketsel" name="ticketsel" class="custom-select form-control">
                                         <option selected="selected" value="/tickets/create">Service Ticket</option>
-                                        <option value="/tickets/create">Post-Install</option>
-                                        <option value="/tickets/create">Exposure</option>
-                                        <option value="/tickets/create">Training</option>
-                                        <option value="/tickets/create">Add-on Quote</option>
-                                        <option value="/tickets/create">IST</option>
+                                        <option value="/pst/create">Post-Install</option>
+                                        <option value="/exposure/create">Exposure</option>
+                                        <option value="/addon/create">Add-on Quote</option>
+                                        <option value="/ist/create">IST</option>
                                         <option value="/intrusion/create">Intrusion</option>
-                                        <option value="/tickets/create">Camera</option>
                                     </select>
                                 </div>    
                             </div>

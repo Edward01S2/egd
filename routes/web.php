@@ -26,6 +26,30 @@ Route::post('/intrusion/create', 'IntrusionController@create');
 Route::post('/intrusion', 'IntrusionController@store');
 Route::get('/intrusion/{intrusion}', 'IntrusionController@show');
 
+Route::get('/exposure', 'ExposureController@index');
+Route::get('/exposure/create', 'ExposureController@create');
+Route::post('/exposure/create', 'ExposureController@create');
+Route::post('/exposure', 'ExposureController@store');
+Route::get('/exposure/{exposure}', 'ExposureController@show');
+
+Route::get('/pst', 'PSTController@index');
+Route::get('/pst/create', 'PSTController@create');
+Route::post('/pst/create', 'PSTController@create');
+Route::post('/pst', 'PSTController@store');
+Route::get('/pst/{pst}', 'PSTController@show');
+
+Route::get('/ist', 'ISTController@index');
+Route::get('/ist/create', 'ISTController@create');
+Route::post('/ist/create', 'ISTController@create');
+Route::post('/ist', 'ISTController@store');
+Route::get('/ist/{ist}', 'ISTController@show');
+
+Route::get('/addon', 'AddonController@index');
+Route::get('/addon/create', 'AddonController@create');
+Route::post('/addon/create', 'AddonController@create');
+Route::post('/addon', 'AddonController@store');
+Route::get('/addon/{addon}', 'AddonController@show');
+
 Route::get('/about', function () {
     return view('about');
 });
