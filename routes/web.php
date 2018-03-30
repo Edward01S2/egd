@@ -24,7 +24,7 @@ Route::get('/intrusion', 'IntrusionController@index');
 Route::get('/intrusion/create', 'IntrusionController@create');
 Route::post('/intrusion/create', 'IntrusionController@create');
 Route::post('/intrusion', 'IntrusionController@store');
-Route::get('/intrusion/{ticket}', 'IntrusionController@show');
+Route::get('/intrusion/{intrusion}', 'IntrusionController@show');
 
 Route::get('/about', function () {
     return view('about');

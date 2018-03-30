@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Intrusion extends Model
 {
     //
+    public function getRouteKeyName() {
+        return 'ticket_num';
+    }
 }
