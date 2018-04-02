@@ -63,6 +63,6 @@ class ISTController extends Controller
 
         ]);
 
-        return redirect('/ist');
+        return redirect('/');
     }
 }

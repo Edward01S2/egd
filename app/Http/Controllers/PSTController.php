@@ -73,6 +73,6 @@ class PSTController extends Controller
 
         ]);
 
-        return redirect('/pst');
+        return redirect('/');
     }
 }

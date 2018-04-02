@@ -111,7 +111,7 @@ class IntrusionController extends Controller
 
         ]);
 
-        return redirect('/intrusion');
+        return redirect('/');
 
     }
 }

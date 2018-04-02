@@ -209,7 +209,7 @@ class TicketsController extends Controller
 
         ]);
 
-        return redirect('/tickets');
+        return redirect('/');
     }
 
 }
