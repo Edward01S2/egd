@@ -15,6 +15,29 @@ class CreateExpoTable extends Migration
     {
         Schema::create('expo', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('ticket_num');
+            $table->date('visit_date')->nullable();
+            $table->integer('acct_num')->nullable();
+            $table->time('arrive_time')->nullable();
+            $table->string('serv_tech')->nullable();
+            $table->time('depart_time')->nullable();
+            $table->string('cust_name')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('expo_name')->nullable();
+            $table->string('expo_phone')->nullable();
+            $table->date('expo_date')->nullable();
+            $table->time('expo_time')->nullable();
+            $table->integer('med_att')->nullable();
+            $table->integer('workman')->nullable();
+            $table->text('desc_expo')->nullable();
+            $table->text('wit_info')->nullable();
+            $table->text('cond')->nullable();
+            $table->text('assess')->nullable();
+            $table->text('add_comm')->nullable();
+            $table->integer('fence_depart')->nullable();
             $table->timestamps();
         });
     }

@@ -2,9 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Exposure extends Model
 {
-    //
+    public $table = "expo";
+
+    public function getRouteKeyName() {
+        return 'ticket_num';
+    }
 }

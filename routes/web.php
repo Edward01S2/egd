@@ -30,7 +30,7 @@ Route::get('/exposure', 'ExposureController@index');
 Route::get('/exposure/create', 'ExposureController@create');
 Route::post('/exposure/create', 'ExposureController@create');
 Route::post('/exposure', 'ExposureController@store');
-Route::get('/exposure/{exposure}', 'ExposureController@show');
+Route::get('/exposure/{expo}', 'ExposureController@show');
 
 Route::get('/pst', 'PSTController@index');
 Route::get('/pst/create', 'PSTController@create');
