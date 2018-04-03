@@ -34,7 +34,7 @@
                                         <option value="/pst/create">Post-Install</option>
                                         <option value="/exposure/create">Exposure</option>
                                         <option value="/addon/create">Add-on Quote</option>
-                                        <option value="/ist/create">IST</option>
+                                        <option value="/ist/create">Pre-Install</option>
                                         <option value="/intrusion/create">Intrusion</option>
                                     </select>
                                 </div>    
