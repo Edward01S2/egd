@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PST;
+use Response;
 
 class PSTController extends Controller
 {
@@ -75,5 +76,18 @@ class PSTController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function download(PST $pst) {
+        $ticknum = $pst->ticket_num;
+        $tickname = $ticknum . '_post.pdf';
+        $file = storage_path() . '/app/public/' . $ticknum . '/' . $tickname;
+        //dd($file);
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($file, $tickname, $headers);
     }
 }

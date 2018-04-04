@@ -17,6 +17,7 @@
                     <th>State</th>
                     <th>Phone</th>
                     <th>Date</th>
+                    <th>DL</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +31,7 @@
                     <td>{{ $ticket->state}}</td>
                     <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
-                    <!--<td><a id="dl-pdf" class="btn btn-secondary" href="" target="_blank">Download</a></td>  -->
+                    <td><a id="dl-pdf" class="" href="/tickets/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
                 @endforeach
 
@@ -43,7 +44,7 @@
                     <td>{{ $ticket->state}}</td>
                     <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
-                    <!--<td><a id="dl-pdf" class="btn btn-secondary" href="" target="_blank">Download</a></td>  -->
+                    <<td><a id="dl-pdf" class="" href="/exposure/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
                 @endforeach
 
@@ -56,7 +57,7 @@
                     <td>{{ $ticket->state}}</td>
                     <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
-                    <!--<td><a id="dl-pdf" class="btn btn-secondary" href="" target="_blank">Download</a></td>  -->
+                    <td><a id="dl-pdf" class="" href="/addon/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
                 @endforeach
 
@@ -69,7 +70,7 @@
                     <td>{{ $ticket->state}}</td>
                     <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
-                    <!--<td><a id="dl-pdf" class="btn btn-secondary" href="" target="_blank">Download</a></td>  -->
+                    <td><a id="dl-pdf" class="" href="/intrusion/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
                 @endforeach
 
@@ -82,7 +83,7 @@
                     <td>{{ $ticket->state}}</td>
                     <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->date }}</td>
-                    <!--<td><a id="dl-pdf" class="btn btn-secondary" href="" target="_blank">Download</a></td>  -->
+                    <td><a id="dl-pdf" class="" href="/pst/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
                 @endforeach
 
@@ -95,7 +96,7 @@
                     <td>{{ $ticket->state}}</td>
                     <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
-                    <!--<td><a id="dl-pdf" class="btn btn-secondary" href="" target="_blank">Download</a></td>  -->
+                    <td><a id="dl-pdf" class="" href="/ist/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
                 @endforeach
 

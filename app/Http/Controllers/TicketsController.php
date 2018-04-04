@@ -8,6 +8,7 @@ use App\IST;
 use App\PST;
 use App\Exposure;
 use App\Intrusion;
+use Response;
 use View;
 use File;
 use Illuminate\Support\Facades\Storage;
@@ -70,6 +71,15 @@ class TicketsController extends Controller
                     unset($uploads[$key]);
                 }
                 if(preg_match('/ticket.pdf/', $value)) {
+                    unset($uploads[$key]);
+                }
+                if(preg_match('/addon_sig.jpg/', $value)) {
+                    unset($uploads[$key]);
+                }
+                if(preg_match('/expo_sig.jpg/', $value)) {
+                    unset($uploads[$key]);
+                }
+                if(preg_match('/intrusion_sig.jpg/', $value)) {
                     unset($uploads[$key]);
                 }
             }
@@ -159,20 +169,6 @@ class TicketsController extends Controller
             }
         }
 
-        //Optimize images
-        //$dest = '/public/' . $ticket->ticket_num . '/';
-        // $path = '/' . request('ticket_num') . '/';
-        // //dd($path);
-        // $files = Storage::files($path);
-        // dd($files);
-        // if($files = Storage::files($path)) {
-        //     dd($files);
-        //     foreach($files as $key ) {
-        //         //dd$key;
-        //         //ImageOptimizer::optimize($key);
-        //     }
-        // }
-
         Ticket::create([
             'ticket_num' => request('ticket_num'),
             'visit_date' => request('visit_date'),
@@ -250,6 +246,19 @@ class TicketsController extends Controller
             return redirect('/');
         }
 
+    }
+
+    public function download(Ticket $ticket) {
+        $ticknum = $ticket->ticket_num;
+        $tickname = $ticknum . '_sv.pdf';
+        $file = storage_path() . '/app/public/' . $ticknum . '/' . $tickname;
+        //dd($file);
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($file, $tickname, $headers);
     }
 
 }

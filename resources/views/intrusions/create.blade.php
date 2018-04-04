@@ -34,7 +34,7 @@
 
                 <div class="mb-3">
                     <label for="serv_tech">Service Tech</label>
-                    <input type="text" class="form-control" name="serv_tech" placeholder="" value="">
+                    <input type="text" class="form-control" name="serv_tech" placeholder="" value="{{ Auth::user()->name }}">
                     <div class="invalid-feedback">
     
                     </div>

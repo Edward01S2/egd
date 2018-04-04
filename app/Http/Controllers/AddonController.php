@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Addon;
 use View;
 use File;
+use Response;
 use Illuminate\Support\Facades\Storage;
 
 class AddonController extends Controller
@@ -124,5 +125,18 @@ class AddonController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function download(Addon $addon) {
+        $ticknum = $addon->ticket_num;
+        $tickname = $ticknum . '_addon.pdf';
+        $file = storage_path() . '/app/public/' . $ticknum . '/' . $tickname;
+        //dd($file);
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($file, $tickname, $headers);
     }
 }

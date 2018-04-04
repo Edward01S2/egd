@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 use App\Ticket;
+use App\Intrusion;
+use App\PST;
+use App\IST;
+use App\Exposure;
+use App\Addon;
 use Auth;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Browsershot\Browsershot;
@@ -39,7 +44,7 @@ class TicketServiceProvider extends ServiceProvider
                 }
             }
 
-            $path = storage_path('app/public/' . $ticket->ticket_num . '/ticket.pdf');
+            $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_sv.pdf');
             $url = url('/tickets/' . $ticket->ticket_num);
             //dd($url);
             Browsershot::url($url)
@@ -74,8 +79,51 @@ class TicketServiceProvider extends ServiceProvider
                 });
             }
 
+        });
 
+        Intrusion::created(function($ticket) {
+            $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_intr.pdf');
+            $url = url('/intrusion/' . $ticket->ticket_num);
+            //dd($url);
+            Browsershot::url($url)
+                ->emulateMedia('print')
+                ->save($path);
+        });
 
+        PST::created(function($ticket) {
+            $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_post.pdf');
+            $url = url('/pst/' . $ticket->ticket_num);
+            //dd($url);
+            Browsershot::url($url)
+                ->emulateMedia('print')
+                ->save($path);
+        });
+
+        Exposure::created(function($ticket) {
+            $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_expo.pdf');
+            $url = url('/exposure/' . $ticket->ticket_num);
+            //dd($url);
+            Browsershot::url($url)
+                ->emulateMedia('print')
+                ->save($path);
+        });
+
+        IST::created(function($ticket) {
+            $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_ist.pdf');
+            $url = url('/ist/' . $ticket->ticket_num);
+            //dd($url);
+            Browsershot::url($url)
+                ->emulateMedia('print')
+                ->save($path);
+        });
+
+        Addon::created(function($ticket) {
+            $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_addon.pdf');
+            $url = url('/addon/' . $ticket->ticket_num);
+            //dd($url);
+            Browsershot::url($url)
+                ->emulateMedia('print')
+                ->save($path);
         });
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Intrusion;
 use File;
 use Illuminate\Support\Facades\Storage;
+use Response;
 
 class IntrusionController extends Controller
 {
@@ -114,5 +115,18 @@ class IntrusionController extends Controller
 
         return redirect('/');
 
+    }
+
+    public function download(Intrusion $intrusion) {
+        $ticknum = $intrusion->ticket_num;
+        $tickname = $ticknum . '_intr.pdf';
+        $file = storage_path() . '/app/public/' . $ticknum . '/' . $tickname;
+        //dd($file);
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($file, $tickname, $headers);
     }
 }

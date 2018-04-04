@@ -6,6 +6,7 @@ use App\IST;
 use View;
 use File;
 use Illuminate\Http\Request;
+use Response;
 
 class ISTController extends Controller
 {
@@ -92,5 +93,18 @@ class ISTController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function download(IST $ist) {
+        $ticknum = $ist->ticket_num;
+        $tickname = $ticknum . '_ist.pdf';
+        $file = storage_path() . '/app/public/' . $ticknum . '/' . $tickname;
+        //dd($file);
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($file, $tickname, $headers);
     }
 }

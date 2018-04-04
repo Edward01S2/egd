@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exposure;
 use View;
 use File;
+use Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -88,5 +89,18 @@ class ExposureController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function download(Exposure $expo) {
+        $ticknum = $expo->ticket_num;
+        $tickname = $ticknum . '_expo.pdf';
+        $file = storage_path() . '/app/public/' . $ticknum . '/' . $tickname;
+        //dd($file);
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($file, $tickname, $headers);
     }
 }
