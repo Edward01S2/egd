@@ -15,7 +15,6 @@
                     <th>Customer</th>
                     <th>City</th>
                     <th>State</th>
-                    <th>Phone</th>
                     <th>Date</th>
                     <th>DL</th>
                 </tr>
@@ -29,7 +28,6 @@
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
-                    <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
                     <td><a id="dl-pdf" class="" href="/tickets/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
@@ -42,9 +40,8 @@
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
-                    <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
-                    <<td><a id="dl-pdf" class="" href="/exposure/{{ $ticket->ticket_num }}/download">PDF</a></td>
+                    <td><a id="dl-pdf" class="" href="/exposure/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
                 @endforeach
 
@@ -55,7 +52,6 @@
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
-                    <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
                     <td><a id="dl-pdf" class="" href="/addon/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
@@ -68,7 +64,6 @@
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
-                    <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
                     <td><a id="dl-pdf" class="" href="/intrusion/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
@@ -81,7 +76,6 @@
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
-                    <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->date }}</td>
                     <td><a id="dl-pdf" class="" href="/pst/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>
@@ -94,7 +88,6 @@
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
-                    <td>{{ $ticket->phone}}</td>
                     <td>{{ $ticket->visit_date }}</td>
                     <td><a id="dl-pdf" class="" href="/ist/{{ $ticket->ticket_num }}/download">PDF</a></td>
                 </tr>

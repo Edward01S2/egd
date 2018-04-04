@@ -37,7 +37,9 @@ class TicketsController extends Controller
 
         $qual_options = array("Choose Rank", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
 
-        return array($zone_options, $key_options, $ener_options, $feed_options, $veg_options, $qual_options) ;
+        $follow_options = array("None", "Debris", "Repair", "Other");
+
+        return array($zone_options, $key_options, $ener_options, $feed_options, $veg_options, $qual_options, $follow_options) ;
     }
 
     public function index() {
@@ -192,6 +194,8 @@ class TicketsController extends Controller
             'site_arm' => request('site_arm'),
             'sign60' => request('sign60'),
             'batt_charge' => request('batt_charge'),
+            'followup' => request('followup'),
+            'other' => request('other'),
             'sizone' => $sizone,
             'siener' => $siener,
             'break_gap' => request('break_gap'),

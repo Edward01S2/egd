@@ -37,6 +37,8 @@ class CreateTicketsTable extends Migration
             $table->integer('site_arm')->nullable();
             $table->integer('sign60');
             $table->integer('batt_charge')->nullable();
+            $table->integer('followup')->nullable();
+            $table->string('other')->nullable();
             $table->json('sizone')->nullable();
             $table->json('siener')->nullable();
             $table->string('break_gap')->nullable();

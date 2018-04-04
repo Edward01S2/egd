@@ -79,6 +79,41 @@ class TicketServiceProvider extends ServiceProvider
                 });
             }
 
+            if($ticket->followup === "1") {
+
+                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
+
+                \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
+                    $m->to('eshannon@afterhoursupgrades.com');
+                    $m->subject('Ticket # '. $ticknum . ' - Customer Not Ready: Debris');
+                    $m ->attach($path);
+                });
+            }
+
+            if($ticket->followup === "2") {
+
+                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
+
+                \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
+                    $m->to('eshannon@afterhoursupgrades.com');
+                    $m->subject('Ticket # '. $ticknum . ' - Customer Not Ready: Need Repair');
+                    $m ->attach($path);
+                });
+            }
+
+            if($ticket->followup === "3") {
+
+                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
+
+                \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
+                    $m->to('eshannon@afterhoursupgrades.com');
+                    $m->subject('Ticket # '. $ticknum . ' - Customer Not Ready: Other');
+                    $m ->attach($path);
+                });
+            }
+
+
+
         });
 
         Intrusion::created(function($ticket) {

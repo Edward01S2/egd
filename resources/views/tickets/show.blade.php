@@ -211,6 +211,19 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Follow-up needed?</label>
+                {{ Form::select('followup', $sel_options[6], $ticket->followup, ['class'=> 'custom-select form-control', 'id'=> 'followup']) }}    
+            </div>
+            @if($ticket->followup == 3) 
+            <div class="col-md-8 mb-3">
+                <label>If other, please explain:</label>
+            <input type="text" class="form-control" name="other" placeholder="" value="{{ $ticket->other }}">   
+            </div>
+            @endif
+        </div>
+
         <div class="row force-break">
             <div class="col-12">
                 <table class="table table-sm">

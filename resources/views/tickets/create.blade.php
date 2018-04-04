@@ -220,6 +220,17 @@
         </div>
 
         <div class="row">
+            <div class="col-md-4 mb-3">
+                <label>Follow-up needed?</label>
+                {{ Form::select('followup', $sel_options[6], null, ['class'=> 'custom-select form-control', 'id'=> 'followup']) }}    
+            </div>
+            <div class="col-md-8 mb-3" id="follow-container">
+                <label>If other, please explain:</label>
+                <input type="text" class="form-control" name="other" placeholder="" value="">   
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-12">
                 <table class="table table-sm">
                     <tbody>
@@ -856,12 +867,22 @@ $('#form_ticket').submit(function (e) {
 $(document).ready(function() {
     $('#vegetation').change(function() {
     var sel = $(this).val();
-    console.log(sel);
+    //console.log(sel);
         if($(this).val() == 2) {
             $('#site-container').show();
         }
         else {
             $('#site-container').hide();
+        }
+    });
+
+    $('#followup').change(function() {
+    //console.log(sel);
+        if($(this).val() == 3) {
+            $('#follow-container').show();
+        }
+        else {
+            $('#follow-container').hide();
         }
     });
 });

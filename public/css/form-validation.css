@@ -73,6 +73,10 @@
     display: none;
 }
 
+#follow-container {
+    display: none;
+}
+
 @media print {
 
     .nav-layout {
