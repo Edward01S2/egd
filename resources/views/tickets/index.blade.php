@@ -24,7 +24,7 @@
                 @foreach($sv as $ticket)
                 <tr> 
                     <td><a href="/tickets/{{ $ticket->ticket_num}}">{{ $ticket->ticket_num}}</a></td>
-                    <td>{{ $ticket->type }}</td>
+                    <td>{{ $ticket->tt }}</td>
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
@@ -37,7 +37,7 @@
                 @foreach($expo as $ticket)
                 <tr> 
                     <td><a href="/exposure/{{ $ticket->ticket_num}}">{{ $ticket->ticket_num}}</a></td>
-                    <td>{{ $ticket->type }}</td>
+                    <td>{{ $ticket->tt }}</td>
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
@@ -50,7 +50,7 @@
                 @foreach($addon as $ticket)
                 <tr> 
                     <td><a href="/addon/{{ $ticket->ticket_num}}">{{ $ticket->ticket_num}}</a></td>
-                    <td>{{ $ticket->type }}</td>
+                    <td>{{ $ticket->tt }}</td>
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
@@ -63,7 +63,7 @@
                 @foreach($intr as $ticket)
                 <tr> 
                     <td><a href="/intrusion/{{ $ticket->ticket_num}}">{{ $ticket->ticket_num}}</a></td>
-                    <td>{{ $ticket->type }}</td>
+                    <td>{{ $ticket->tt }}</td>
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
@@ -76,12 +76,12 @@
                 @foreach($post as $ticket)
                 <tr> 
                     <td><a href="/pst/{{ $ticket->ticket_num}}">{{ $ticket->ticket_num}}</a></td>
-                    <td>{{ $ticket->type }}</td>
+                    <td>{{ $ticket->tt }}</td>
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>
                     <td>{{ $ticket->phone}}</td>
-                    <td>{{ $ticket->visit_date }}</td>
+                    <td>{{ $ticket->date }}</td>
                     <!--<td><a id="dl-pdf" class="btn btn-secondary" href="" target="_blank">Download</a></td>  -->
                 </tr>
                 @endforeach
@@ -89,7 +89,7 @@
                 @foreach($inst as $ticket)
                 <tr> 
                     <td><a href="/ist/{{ $ticket->ticket_num}}">{{ $ticket->ticket_num}}</a></td>
-                    <td>{{ $ticket->type }}</td>
+                    <td>{{ $ticket->tt }}</td>
                     <td>{{ $ticket->cust_name}}</td>
                     <td>{{ $ticket->city}}</td>
                     <td>{{ $ticket->state}}</td>

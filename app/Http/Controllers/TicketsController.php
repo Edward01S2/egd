@@ -32,7 +32,7 @@ class TicketsController extends Controller
 
         $feed_options = array("Choose Feed", "Feed #4", "Feed #6", "Feed #8", "Feed #10", "Feed #11", "Feed #12");
 
-        $veg_options = array("High", "Med", "Low");
+        $veg_options = array("Low", "Med", "High");
 
         $qual_options = array("Choose Rank", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
 
@@ -193,6 +193,7 @@ class TicketsController extends Controller
             'vegetation' => request('vegetation'),
             'batt_num' => request('batt_num'),
             'solar_num' => request('solar_num'),
+            'site_arm' => request('site_arm'),
             'sign60' => request('sign60'),
             'batt_charge' => request('batt_charge'),
             'sizone' => $sizone,
@@ -227,11 +228,23 @@ class TicketsController extends Controller
 
         //Redirect to other tickets if need be
 
+        $ticket_num = request('ticket_num');
+        $acct_num = request('acct_num');
+        $tech = request('serv_tech');
+        $cust = request('cust_name');
+        $city = request('city');
+        $state = request('state');
+        $date = request('visit_date');
+        $contact = request('contact');
+        $phone = request('phone');
+        $arr = request('arrive_time');
+        $dep = request('depart_time');
+
         if(request('ticket_type') == 'Post-Install') {
-            return redirect('/pst/create');
+            return redirect('/pst/create')->with(compact('ticket_num', 'acct_num', 'tech', 'cust', 'city', 'state', 'date'));
         }
         elseif(request('ticket_type') == 'Exposure') {
-            return redirect('/exposure/create');
+            return redirect('/exposure/create')->with(compact('ticket_num', 'acct_num', 'tech', 'cust', 'city', 'state', 'date', 'contact', 'phone', 'arr', 'dep'));
         }
         else {
             return redirect('/');

@@ -47,19 +47,34 @@ class TicketServiceProvider extends ServiceProvider
                 ->save($path);
 
             //Automatic emails
-            //Vegetation select starts with 0 - high
+            //Vegetation select starts with 2 - high and the site can arm
 
-            if($ticket->vegetation === "0") {
-                //$attach = Storage::url('public/' . $ticket->ticket_num . '/ticket.pdf');
-                //dd($attach);
+            $ticknum = $ticket->ticket_num;
+
+            if($ticket->vegetation === "2" && $ticket->site_arm === "1") {
+
                 $path = storage_path('app/public/' . $ticket->ticket_num . '/ticket.pdf');
-                //$user = Auth::user();
-                \Mail::send('emails.vegetation', [], function($m) use ($path) {
-                    $m->to('edward.01s2@gmail.com');
-                    $m->subject('Send Herbicide');
+
+                \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
+                    $m->to('eshannon@afterhoursupgrades.com');
+                    $m->subject('Ticket # '. $ticknum . ' - Send Herbicide');
                     $m ->attach($path);
                 });
             }
+
+            //Vegetation is high and the site cannot arm
+            if($ticket->vegetation === "2" && $ticket->site_arm === "0") {
+
+                $path = storage_path('app/public/' . $ticket->ticket_num . '/ticket.pdf');
+
+                \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
+                    $m->to('eshannon@afterhoursupgrades.com');
+                    $m->subject('Ticket # '. $ticknum . ' - Customer Not Ready');
+                    $m ->attach($path);
+                });
+            }
+
+
 
         });
     }

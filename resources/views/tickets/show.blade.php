@@ -186,6 +186,15 @@
         </div>
 
         <div class="row">
+            @if($ticket->site_arm == 1) 
+            <div class="col-md-4 mb-3">
+                <div class="custom-control custom-checkbox">
+                    <input type="hidden" name="site_arm" value="0">
+                    {{ Form::checkbox('site_arm', '1', $ticket->site_arm, ['class' => 'custom-control-input', 'id' => 'site_arm']) }}
+                    <label class="custom-control-label" for="site_arm">Can the site arm?</label>
+                </div>
+            </div>
+            @endif
             <div class="col-md-4 mb-3">
                 <div class="form-check">
                     <input type="hidden" name="sign60" value="0">

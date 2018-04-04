@@ -34,6 +34,7 @@ class CreateTicketsTable extends Migration
             $table->integer('vegetation');
             $table->string('batt_num')->nullable();
             $table->string('solar_num')->nullable();
+            $table->integer('site_arm')->nullable();
             $table->integer('sign60');
             $table->integer('batt_charge')->nullable();
             $table->json('sizone')->nullable();

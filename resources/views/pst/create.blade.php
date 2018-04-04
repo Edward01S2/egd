@@ -18,7 +18,7 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="ticket_num">Ticket #</label>
-                <input type="text" class="form-control" name="ticket_num" placeholder="" value="{{ $ticket_num or ' ' }}" >
+                <input type="text" class="form-control" name="ticket_num" placeholder="" value="@if (session('ticket_num')) {{ session('ticket_num') }} @endif" >
                     <div class="invalid-feedback">
                         Ticket # is required.
                     </div>
@@ -26,7 +26,7 @@
 
                 <div class="mb-3">
                     <label for="acct_num">Account #</label>
-                    <input type="text" class="form-control" name="acct_num" placeholder="" value="" >
+                    <input type="text" class="form-control" name="acct_num" placeholder="" value="@if (session('acct_num')) {{ session('acct_num') }} @endif" >
                     <div class="invalid-feedback">
                         Account # is required.
                     </div>
@@ -38,7 +38,7 @@
 
                 <div class="mb-3">
                     <label for="serv_tech">Technician</label>
-                    <input type="text" class="form-control" name="tech" placeholder="" value="">
+                    <input type="text" class="form-control" name="tech" placeholder="" value="@if (session('tech')) {{ session('tech') }} @endif">
                     <div class="invalid-feedback">
     
                     </div>
@@ -52,7 +52,7 @@
 
                 <div class="mb-3">
                     <label for="visit_date">Date</label>
-                    <input type="date" class="form-control" name="date" placeholder="" value="" >
+                    <input type="date" class="form-control" name="date" placeholder="" value="@if (session('date')) {{ session('date') }} @endif" >
                     <div class="invalid-feedback">
                         Visit date is required.
                     </div>
@@ -65,21 +65,21 @@
         <div class="row">
             <div class="col-md-7 mb-3">
                 <label>Customer Name</label>
-                <input type="text" class="form-control" name="cust_name" placeholder="" value="" >
+                <input type="text" class="form-control" name="cust_name" placeholder="" value="@if (session('cust')) {{ session('cust') }} @endif" >
                 <div class="invalid-feedback">
 
                 </div>
             </div>
             <div class="col-md-3 mb-3">
                 <label>Site City</label>
-                <input type="text" class="form-control" name="city" placeholder="" value="">
+                <input type="text" class="form-control" name="city" placeholder="" value="@if (session('city')) {{ session('city') }} @endif">
                 <div class="invalid-feedback">
                     
                 </div>
             </div>
             <div class="col-md-2 mb-3">
                 <label>Site State</label>
-                <input type="text" class="form-control" name="state" placeholder="" value="">
+                <input type="text" class="form-control" name="state" placeholder="" value="@if (session('state')) {{ session('state') }} @endif">
                 <div class="invalid-feedback">
                     
                 </div>

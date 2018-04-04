@@ -177,7 +177,7 @@
         <div class="row">
             <div class="col-md-4 mb-3">
                 <label>Vegetation</label>
-                {{ Form::select('vegetation', $sel_options[4], null, ['class'=> 'custom-select form-control']) }}    
+                {{ Form::select('vegetation', $sel_options[4], null, ['class'=> 'custom-select form-control', 'id'=> 'vegetation']) }}    
             </div>
             <div class="col-md-4 mb-3">
                 <label># Batteries:</label>
@@ -196,6 +196,13 @@
         </div>
 
         <div class="row">
+            <div class="col-md-4 mb-3" id="site-container">
+                <div class="custom-control custom-checkbox">
+                    <input type="hidden" name="site_arm" value="0">
+                    {{ Form::checkbox('site_arm', '1', null, ['class' => 'custom-control-input', 'id' => 'site_arm']) }}
+                    <label class="custom-control-label" for="site_arm">Can the site arm?</label>
+                </div>
+            </div>
             <div class="col-md-4 mb-3">
                 <div class="custom-control custom-checkbox">
                     <input type="hidden" name="sign60" value="0">
@@ -718,7 +725,7 @@
         </div>
         
         <hr class="mb-4">
-        <input type="hidden" name="ticket_type" value="{{ $ticket_type }}"/>
+        <input type="hidden" name="ticket_type" value="{{ $ticket_type or '' }}"/>
         <input type="hidden" name="tt" value="Service"/>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
         </form>
@@ -845,6 +852,20 @@ $('#form_ticket').submit(function (e) {
         self.submit();
     }
 });
+
+$(document).ready(function() {
+    $('#vegetation').change(function() {
+    var sel = $(this).val();
+    console.log(sel);
+        if($(this).val() == 2) {
+            $('#site-container').show();
+        }
+        else {
+            $('#site-container').hide();
+        }
+    });
+});
+
 
 </script>
 @endsection
