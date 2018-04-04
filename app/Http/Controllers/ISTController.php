@@ -7,6 +7,7 @@ use View;
 use File;
 use Illuminate\Http\Request;
 use Response;
+use Illuminate\Support\Facades\Storage;
 
 class ISTController extends Controller
 {
@@ -39,6 +40,12 @@ class ISTController extends Controller
     public function store() {
 
         $ist = new IST;
+
+        $dest = '/public/' . request('ticket_num');
+
+        if(!File::isDirectory($dest)) {
+            Storage::makeDirectory($dest);
+        }
 
         IST::create([
             'ticket_num' => request('ticket_num'),

@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mb-3 text-center">Exposure Ticket</h2>
+        <h2 class="mb-3 text-center print-top">Exposure Ticket</h2>
         <form method="POST" id="form_ticket" action="" enctype="multipart/form-data">
 
             {{ csrf_field() }}
@@ -143,17 +143,17 @@
         <div class="row">
           
             <div class="col-md-4 mb-3">
-                <div class="custom-control custom-checkbox">
+                <div class="form-check">
                     <input type="hidden" name="med_att" value="0">
-                    {{ Form::checkbox('med_att', '1', $expo->med_att, ['class' => 'custom-control-input', 'id' => 'med_att']) }}
-                    <label class="custom-control-label" for="med_att">Was medical attention sought?</label>
+                    {{ Form::checkbox('med_att', '1', $expo->med_att, ['class' => 'form-check-input', 'id' => 'med_att']) }}
+                    <label class="form-check-label" for="med_att">Was medical attention sought?</label>
                 </div>
             </div>
             <div class="col-md-8 mb-3">
-                <div class="custom-control custom-checkbox">
+                <div class="form-check">
                     <input type="hidden" name="workman" value="0">
-                    {{ Form::checkbox('workman', '1', $expo->workman, ['class' => 'custom-control-input', 'id' => 'workman']) }}
-                    <label class="custom-control-label" for="workman">If yes to medical attention, was it filed as Workman's Comp?</label>
+                    {{ Form::checkbox('workman', '1', $expo->workman, ['class' => 'form-check-input', 'id' => 'workman']) }}
+                    <label class="form-check-label" for="workman">If yes to medical attention, was it filed as Workman's Comp?</label>
                 </div>
             </div>
 
@@ -189,18 +189,18 @@
             <div class="invalid-feedback"></div>
         </div>
 
-        <div class="row mb-4">
+        <div class="row mb-4 force-break">
             <div class="col-8">
-                <div class="custom-control custom-checkbox">
+                <div class="form-check">
                     <input type="hidden" name="fence_depart" value="0">
-                    {{ Form::checkbox('fence_depart', '1', $expo->fence_depart, ['class' => 'custom-control-input', 'id' => 'fence_depart']) }}
-                    <label class="custom-control-label" for="fence_depart">Is fence working properly upon tech departure:</label>
+                    {{ Form::checkbox('fence_depart', '1', $expo->fence_depart, ['class' => 'form-check-input', 'id' => 'fence_depart']) }}
+                    <label class="form-check-label" for="fence_depart">Is fence working properly upon tech departure:</label>
                 </div>
             </div>
         </div>
 
 
-        <div id="sig-block" class="row mb-3">
+        <div id="sig-block" class="row mb-3 print-top">
 
             <div class="col-6">
                     <div class="wrapper">

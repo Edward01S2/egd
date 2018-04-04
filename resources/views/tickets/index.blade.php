@@ -114,7 +114,9 @@
 
 <script>
     $(document).ready(function() {
-        $('#sv_table').DataTable();
+        $('#sv_table').DataTable({
+            "iDisplayLength":50
+        });
     });
 </script>
 @endsection

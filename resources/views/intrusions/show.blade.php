@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mb-3 text-center">Intrusion Service Ticket</h2>
+        <h2 class="mb-3 text-center print-top">Intrusion Service Ticket</h2>
         <form method="POST" id="intrusion_ticket" action="/intrusion">
 
             {{ csrf_field() }}
@@ -241,17 +241,17 @@
 
         <div class="row">
             <div class="col-md-4 mb-3">
-                <div class="custom-control custom-checkbox">
+                <div class="form-check">
                     <input type="hidden" name="ac_power" value="0">
-                    {{ Form::checkbox('ac_power', '1', $intrusion->ac_power, ['class' => 'custom-control-input', 'id' => 'ac_power']) }}
-                    <label class="custom-control-label" for="ac_power">AC Power?</label>
+                    {{ Form::checkbox('ac_power', '1', $intrusion->ac_power, ['class' => 'form-check-input', 'id' => 'ac_power']) }}
+                    <label class="form-check-label" for="ac_power">AC Power?</label>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <div class="custom-control custom-checkbox">
+                <div class="form-check">
                     <input type="hidden" name="user_code" value="0">
-                    {{ Form::checkbox('user_code', '1', $intrusion->user_code, ['class' => 'custom-control-input', 'id' => 'user_code']) }}
-                    <label class="custom-control-label" for="user_code">User Code Changes?</label>
+                    {{ Form::checkbox('user_code', '1', $intrusion->user_code, ['class' => 'form-check-input', 'id' => 'user_code']) }}
+                    <label class="form-check-label" for="user_code">User Code Changes?</label>
                 </div>
             </div>
         </div>
@@ -262,7 +262,7 @@
             <div class="invalid-feedback"></div>
         </div>
 
-        <div class="row">
+        <div class="row force-break">
 
             <div class="col-md-4 mb-3">
                 <label>Monitoring Rep Name:</label>
@@ -281,7 +281,7 @@
 
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 print-top">
             <label>Reason for Service:</label>
             <textarea class="form-control" id="equip" name="svc_reason" rows="3">{{ $intrusion->svc_reason }}</textarea>
             <div class="invalid-feedback"></div>

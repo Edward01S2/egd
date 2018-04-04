@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mb-3 text-center">Post Install Checklist</h2>
+        <h2 class="mb-3 text-center print-head">Post Install Checklist</h2>
         <form method="POST" id="intrusion_ticket" action="/intrusion">
 
             {{ csrf_field() }}
@@ -107,254 +107,254 @@
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check1" value="0">
-                {{ Form::checkbox('check1', '1', $pst->check[0], ['class' => 'custom-control-input', 'id' => 'check1']) }}
-                <label class="custom-control-label ml-3" for="check1">Metal poles are to be a minimum of 5 feet deep with a minimum 15 inch hole and larger in loose soil areas. Bottom bracket is set at ground level.</label>
+                {{ Form::checkbox('check1', '1', $pst->check[0], ['class' => 'form-check-input', 'id' => 'check1']) }}
+                <label class="form-check-label ml-3" for="check1">Metal poles are to be a minimum of 5 feet deep with a minimum 15 inch hole and larger in loose soil areas. Bottom bracket is set at ground level.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check2" value="0">
-                {{ Form::checkbox('check2', '1', $pst->check[1], ['class' => 'custom-control-input', 'id' => 'check2']) }}
-                <label class="custom-control-label ml-3" for="check2">Metal poles will have a slight back-lean to insure that once they have moved an inch or so they will still have a slight back-angle. They should not lean left or right. Please note any poles that have moved since install.</label>
+                {{ Form::checkbox('check2', '1', $pst->check[1], ['class' => 'form-check-input', 'id' => 'check2']) }}
+                <label class="form-check-label ml-3" for="check2">Metal poles will have a slight back-lean to insure that once they have moved an inch or so they will still have a slight back-angle. They should not lean left or right. Please note any poles that have moved since install.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check3" value="0">
-                {{ Form::checkbox('check3', '1', $pst->check[2], ['class' => 'custom-control-input', 'id' => 'check3']) }}
-                <label class="custom-control-label ml-3" for="check3">Metal poles by gates will be turned so brackets face the chain link fence to close gap. Six inch maximum between metal pole & fiberglass pole on gate. Roll gate end pole brackets will face the direction of pull.</label>
+                {{ Form::checkbox('check3', '1', $pst->check[2], ['class' => 'form-check-input', 'id' => 'check3']) }}
+                <label class="form-check-label ml-3" for="check3">Metal poles by gates will be turned so brackets face the chain link fence to close gap. Six inch maximum between metal pole & fiberglass pole on gate. Roll gate end pole brackets will face the direction of pull.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check4" value="0">
-                {{ Form::checkbox('check4', '1', $pst->check[3], ['class' => 'custom-control-input', 'id' => 'check4']) }}
-                <label class="custom-control-label ml-3" for="check4">No gaps are acceptable greater than 6 inches. Use fiberglass if you must step out due to concrete footing. No wire loops to fill in gaps.</label>
+                {{ Form::checkbox('check4', '1', $pst->check[3], ['class' => 'form-check-input', 'id' => 'check4']) }}
+                <label class="form-check-label ml-3" for="check4">No gaps are acceptable greater than 6 inches. Use fiberglass if you must step out due to concrete footing. No wire loops to fill in gaps.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check5" value="0">
-                {{ Form::checkbox('check5', '1', $pst->check[4], ['class' => 'custom-control-input', 'id' => 'check5']) }}
-                <label class="custom-control-label ml-3" for="check5">Metal poles should be free from nicks and scratches. They should be painted with Rustolium paint(light gray).</label>
+                {{ Form::checkbox('check5', '1', $pst->check[4], ['class' => 'form-check-input', 'id' => 'check5']) }}
+                <label class="form-check-label ml-3" for="check5">Metal poles should be free from nicks and scratches. They should be painted with Rustolium paint(light gray).</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check6" value="0">
-                {{ Form::checkbox('check6', '1', $pst->check[5], ['class' => 'custom-control-input', 'id' => 'check6']) }}
-                <label class="custom-control-label ml-3" for="check6">All fiberglass poles will be in line from metal pole to metal pole with no left or right pull and be spaced 3 to 12 inches from perimeter fence.</label>
+                {{ Form::checkbox('check6', '1', $pst->check[5], ['class' => 'form-check-input', 'id' => 'check6']) }}
+                <label class="form-check-label ml-3" for="check6">All fiberglass poles will be in line from metal pole to metal pole with no left or right pull and be spaced 3 to 12 inches from perimeter fence.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check7" value="0">
-                {{ Form::checkbox('check7', '1', $pst->check[6], ['class' => 'custom-control-input', 'id' => 'check7']) }}
-                <label class="custom-control-label ml-3" for="check7">Y-contact on gates should be used with an extension bracket. All contracts must have a bolt installed through fiberglass pole to secure.</label>
+                {{ Form::checkbox('check7', '1', $pst->check[6], ['class' => 'form-check-input', 'id' => 'check7']) }}
+                <label class="form-check-label ml-3" for="check7">Y-contact on gates should be used with an extension bracket. All contracts must have a bolt installed through fiberglass pole to secure.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check8" value="0">
-                {{ Form::checkbox('check8', '1', $pst->check[7], ['class' => 'custom-control-input', 'id' => 'check8']) }}
-                <label class="custom-control-label ml-3" for="check8">All connections from black wire to galvanized wire will be joined with joint clamps and tightened so they cannont be loosened by hand.</label>
+                {{ Form::checkbox('check8', '1', $pst->check[7], ['class' => 'form-check-input', 'id' => 'check8']) }}
+                <label class="form-check-label ml-3" for="check8">All connections from black wire to galvanized wire will be joined with joint clamps and tightened so they cannont be loosened by hand.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check9" value="0">
-                {{ Form::checkbox('check9', '1', $pst->check[8], ['class' => 'custom-control-input', 'id' => 'check9']) }}
-                <label class="custom-control-label ml-3" for="check9">All sections greater than 250 feet have all jumpers connected with joint clamps. All sections smaller than 250 feet have all jumpers connected with splices.</label>
+                {{ Form::checkbox('check9', '1', $pst->check[8], ['class' => 'form-check-input', 'id' => 'check9']) }}
+                <label class="form-check-label ml-3" for="check9">All sections greater than 250 feet have all jumpers connected with joint clamps. All sections smaller than 250 feet have all jumpers connected with splices.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check10" value="0">
-                {{ Form::checkbox('check10', '1', $pst->check[9], ['class' => 'custom-control-input', 'id' => 'check10']) }}
-                <label class="custom-control-label ml-3" for="check10">All nuts on donut insulators should be tight. Insulators should spin freely.</label>
+                {{ Form::checkbox('check10', '1', $pst->check[9], ['class' => 'form-check-input', 'id' => 'check10']) }}
+                <label class="form-check-label ml-3" for="check10">All nuts on donut insulators should be tight. Insulators should spin freely.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check11" value="0">
-                {{ Form::checkbox('check11', '1', $pst->check[10], ['class' => 'custom-control-input', 'id' => 'check11']) }}
-                <label class="custom-control-label ml-3" for="check11">All jumpers must be in straight-angle "C's".</label>
+                {{ Form::checkbox('check11', '1', $pst->check[10], ['class' => 'form-check-input', 'id' => 'check11']) }}
+                <label class="form-check-label ml-3" for="check11">All jumpers must be in straight-angle "C's".</label>
             </div>
         </div>
 
-        <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+        <div class="mb-4 force-break">
+            <div class="form-check">
                 <input type="hidden" name="check12" value="0">
-                {{ Form::checkbox('check12', '1', $pst->check[11], ['class' => 'custom-control-input', 'id' => 'check12']) }}
-                <label class="custom-control-label ml-3" for="check12">All electronics will be run neatly. Any communication wire outdoors will be run to PVC. If inside, run in PVC unless the wire is in rafters or hidden from view.</label>
+                {{ Form::checkbox('check12', '1', $pst->check[11], ['class' => 'form-check-input', 'id' => 'check12']) }}
+                <label class="form-check-label ml-3" for="check12">All electronics will be run neatly. Any communication wire outdoors will be run to PVC. If inside, run in PVC unless the wire is in rafters or hidden from view.</label>
             </div>
         </div>
 
-        <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+        <div class="mb-4 print-top">
+            <div class="form-check">
                 <input type="hidden" name="check13" value="0">
-                {{ Form::checkbox('check13', '1', $pst->check[12], ['class' => 'custom-control-input', 'id' => 'check13']) }}
-                <label class="custom-control-label ml-3" for="check13">Customer's yard will be left cleaner than when we arrived, this includes dirt piles from setting steel poles. All install materials should have been removed from jobsite.</label>
+                {{ Form::checkbox('check13', '1', $pst->check[12], ['class' => 'form-check-input', 'id' => 'check13']) }}
+                <label class="form-check-label ml-3" for="check13">Customer's yard will be left cleaner than when we arrived, this includes dirt piles from setting steel poles. All install materials should have been removed from jobsite.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check14" value="0">
-                {{ Form::checkbox('check14', '1', $pst->check[13], ['class' => 'custom-control-input', 'id' => 'check14']) }}
-                <label class="custom-control-label ml-3" for="check14">All grounds are secured tightly with tap sleeves at the end of medium sprints and crimped at back of gate springs to create a good ground connection.</label>
+                {{ Form::checkbox('check14', '1', $pst->check[13], ['class' => 'form-check-input', 'id' => 'check14']) }}
+                <label class="form-check-label ml-3" for="check14">All grounds are secured tightly with tap sleeves at the end of medium sprints and crimped at back of gate springs to create a good ground connection.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check15" value="0">
-                {{ Form::checkbox('check15', '1', $pst->check[14], ['class' => 'custom-control-input', 'id' => 'check15']) }}
-                <label class="custom-control-label ml-3" for="check15">Bottom #1 wire is completely at ground level all the way around the perimter. #2nd wire stays 4 inches away from #1 wire and # 3 wire. #2 wire is hot all the way around the perimeter.</label>
+                {{ Form::checkbox('check15', '1', $pst->check[14], ['class' => 'form-check-input', 'id' => 'check15']) }}
+                <label class="form-check-label ml-3" for="check15">Bottom #1 wire is completely at ground level all the way around the perimter. #2nd wire stays 4 inches away from #1 wire and # 3 wire. #2 wire is hot all the way around the perimeter.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check16" value="0">
-                {{ Form::checkbox('check16', '1', $pst->check[15], ['class' => 'custom-control-input', 'id' => 'check16']) }}
-                <label class="custom-control-label ml-3" for="check16">No gaps under fence; if there are high or low spots use a full fiberglass pole.</label>
+                {{ Form::checkbox('check16', '1', $pst->check[15], ['class' => 'form-check-input', 'id' => 'check16']) }}
+                <label class="form-check-label ml-3" for="check16">No gaps under fence; if there are high or low spots use a full fiberglass pole.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check17" value="0">
-                {{ Form::checkbox('check17', '1', $pst->check[16], ['class' => 'custom-control-input', 'id' => 'check17']) }}
-                <label class="custom-control-label ml-3" for="check17">Signs will be on every other panel, or every sixty fee. MUST BE Sentry Supplied sign wire.</label>
+                {{ Form::checkbox('check17', '1', $pst->check[16], ['class' => 'form-check-input', 'id' => 'check17']) }}
+                <label class="form-check-label ml-3" for="check17">Signs will be on every other panel, or every sixty fee. MUST BE Sentry Supplied sign wire.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check18" value="0">
-                {{ Form::checkbox('check18', '1', $pst->check[17], ['class' => 'custom-control-input', 'id' => 'check18']) }}
-                <label class="custom-control-label ml-3" for="check18">Only use a fiberglass vs. a metal pole when fiberglass can be braced off without putting too much stree on customer's poles. Never brace off to a wooden pole. ALl bends of 170 degrees or smaller must have a steel pole. ALl braced poles should have brace points at a maximum distance of 24 inches between braces.</label>
+                {{ Form::checkbox('check18', '1', $pst->check[17], ['class' => 'form-check-input', 'id' => 'check18']) }}
+                <label class="form-check-label ml-3" for="check18">Only use a fiberglass vs. a metal pole when fiberglass can be braced off without putting too much stree on customer's poles. Never brace off to a wooden pole. ALl bends of 170 degrees or smaller must have a steel pole. ALl braced poles should have brace points at a maximum distance of 24 inches between braces.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check19" value="0">
-                {{ Form::checkbox('check19', '1', $pst->check[18], ['class' => 'custom-control-input', 'id' => 'check19']) }}
-                <label class="custom-control-label ml-3" for="check19">Splices should be double pressed and wrapped neat and tight.</label>
+                {{ Form::checkbox('check19', '1', $pst->check[18], ['class' => 'form-check-input', 'id' => 'check19']) }}
+                <label class="form-check-label ml-3" for="check19">Splices should be double pressed and wrapped neat and tight.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check20" value="0">
-                {{ Form::checkbox('check20', '1', $pst->check[19], ['class' => 'custom-control-input', 'id' => 'check20']) }}
-                <label class="custom-control-label ml-3" for="check20">When solar panels are installed on a roof, No screws or any type of holes ever go into customer's roof. Wrap with wire to secure to a roof structure.</label>
+                {{ Form::checkbox('check20', '1', $pst->check[19], ['class' => 'form-check-input', 'id' => 'check20']) }}
+                <label class="form-check-label ml-3" for="check20">When solar panels are installed on a roof, No screws or any type of holes ever go into customer's roof. Wrap with wire to secure to a roof structure.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check21" value="0">
-                {{ Form::checkbox('check21', '1', $pst->check[20], ['class' => 'custom-control-input', 'id' => 'check21']) }}
-                <label class="custom-control-label ml-3" for="check21">All connections in both silver box and caddx box must be secure and with wire nuts where necessary.</label>
+                {{ Form::checkbox('check21', '1', $pst->check[20], ['class' => 'form-check-input', 'id' => 'check21']) }}
+                <label class="form-check-label ml-3" for="check21">All connections in both silver box and caddx box must be secure and with wire nuts where necessary.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check22" value="0">
-                {{ Form::checkbox('check22', '1', $pst->check[21], ['class' => 'custom-control-input', 'id' => 'check22']) }}
-                <label class="custom-control-label ml-3" for="check22">ALl on-off switches must be secured to a metal pole. Cable ties are not acceptable.</label>
+                {{ Form::checkbox('check22', '1', $pst->check[21], ['class' => 'form-check-input', 'id' => 'check22']) }}
+                <label class="form-check-label ml-3" for="check22">ALl on-off switches must be secured to a metal pole. Cable ties are not acceptable.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check23" value="0">
-                {{ Form::checkbox('check23', '1', $pst->check[22], ['class' => 'custom-control-input', 'id' => 'check23']) }}
-                <label class="custom-control-label ml-3" for="check23">Drop clip pins are horizontal not vertical and are tight to the fiberglass pole.</label>
+                {{ Form::checkbox('check23', '1', $pst->check[22], ['class' => 'form-check-input', 'id' => 'check23']) }}
+                <label class="form-check-label ml-3" for="check23">Drop clip pins are horizontal not vertical and are tight to the fiberglass pole.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check24" value="0">
-                {{ Form::checkbox('check24', '1', $pst->check[23], ['class' => 'custom-control-input', 'id' => 'check24']) }}
-                <label class="custom-control-label ml-3" for="check24">Rapid tighteners are within 3 feet from fiberglass, staggered and neatly done. Minimum of 3 wraps of wire left on each tightner for future splicing.</label>
+                {{ Form::checkbox('check24', '1', $pst->check[23], ['class' => 'form-check-input', 'id' => 'check24']) }}
+                <label class="form-check-label ml-3" for="check24">Rapid tighteners are within 3 feet from fiberglass, staggered and neatly done. Minimum of 3 wraps of wire left on each tightner for future splicing.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check25" value="0">
-                {{ Form::checkbox('check25', '1', $pst->check[24], ['class' => 'custom-control-input', 'id' => 'check25']) }}
-                <label class="custom-control-label ml-3" for="check25">All break down sections are less than 1200 feet.</label>
+                {{ Form::checkbox('check25', '1', $pst->check[24], ['class' => 'form-check-input', 'id' => 'check25']) }}
+                <label class="form-check-label ml-3" for="check25">All break down sections are less than 1200 feet.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check26" value="0">
-                {{ Form::checkbox('check26', '1', $pst->check[25], ['class' => 'custom-control-input', 'id' => 'check26']) }}
-                <label class="custom-control-label ml-3" for="check26">Fiberglass poles have ancors in them to preven them from being pulled up.</label>
+                {{ Form::checkbox('check26', '1', $pst->check[25], ['class' => 'form-check-input', 'id' => 'check26']) }}
+                <label class="form-check-label ml-3" for="check26">Fiberglass poles have ancors in them to preven them from being pulled up.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check27" value="0">
-                {{ Form::checkbox('check27', '1', $pst->check[26], ['class' => 'custom-control-input', 'id' => 'check27']) }}
-                <label class="custom-control-label ml-3" for="check27">Alarm panel and phone suppressor ground. Use 1 lefg of 14/2 wire under ground terminal and 2nd leg of 14/2 wire to go to ground screw on phone surge protector, then ground 14/2 to ground, other than Electric fence ground and away from other utilities or other devices already grounded.</label>
+                {{ Form::checkbox('check27', '1', $pst->check[26], ['class' => 'form-check-input', 'id' => 'check27']) }}
+                <label class="form-check-label ml-3" for="check27">Alarm panel and phone suppressor ground. Use 1 lefg of 14/2 wire under ground terminal and 2nd leg of 14/2 wire to go to ground screw on phone surge protector, then ground 14/2 to ground, other than Electric fence ground and away from other utilities or other devices already grounded.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check28" value="0">
-                {{ Form::checkbox('check28', '1', $pst->check[27], ['class' => 'custom-control-input', 'id' => 'check28']) }}
-                <label class="custom-control-label ml-3" for="check28">Battery is a sealed maintenance free battery. No water batteries.</label>
+                {{ Form::checkbox('check28', '1', $pst->check[27], ['class' => 'form-check-input', 'id' => 'check28']) }}
+                <label class="form-check-label ml-3" for="check28">Battery is a sealed maintenance free battery. No water batteries.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check29" value="0">
-                {{ Form::checkbox('check29', '1', $pst->check[28], ['class' => 'custom-control-input', 'id' => 'check29']) }}
-                <label class="custom-control-label ml-3" for="check29">All PVC and wiring to electronic boxes enter into the bottom or back, not the top or sides.</label>
+                {{ Form::checkbox('check29', '1', $pst->check[28], ['class' => 'form-check-input', 'id' => 'check29']) }}
+                <label class="form-check-label ml-3" for="check29">All PVC and wiring to electronic boxes enter into the bottom or back, not the top or sides.</label>
             </div>
         </div>
 
         <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+            <div class="form-check">
                 <input type="hidden" name="check30" value="0">
-                {{ Form::checkbox('check30', '1', $pst->check[29], ['class' => 'custom-control-input', 'id' => 'check30']) }}
-                <label class="custom-control-label ml-3" for="check30">Each silver box has 3 ground rods installed 10 feet apart. Wire from ground rods to silver box is black wire and not fence wire. Alarm panel is grounded at least 10 feet from fence grounds.</label>
+                {{ Form::checkbox('check30', '1', $pst->check[29], ['class' => 'form-check-input', 'id' => 'check30']) }}
+                <label class="form-check-label ml-3" for="check30">Each silver box has 3 ground rods installed 10 feet apart. Wire from ground rods to silver box is black wire and not fence wire. Alarm panel is grounded at least 10 feet from fence grounds.</label>
             </div>
         </div>
 
-        <div class="mb-4">
-            <div class="custom-control custom-checkbox">
+        <div class="mb-4 force-break">
+            <div class="form-check">
                 <input type="hidden" name="check31" value="0">
-                {{ Form::checkbox('check31', '1', $pst->check[30], ['class' => 'custom-control-input', 'id' => 'check31']) }}
-                <label class="custom-control-label ml-3" for="check31">Voltage through all gates only travels in one direction. No 2 contacts on one gate panel.</label>
+                {{ Form::checkbox('check31', '1', $pst->check[30], ['class' => 'form-check-input', 'id' => 'check31']) }}
+                <label class="form-check-label ml-3" for="check31">Voltage through all gates only travels in one direction. No 2 contacts on one gate panel.</label>
             </div>
         </div>
 
-        <div class="card mb-4">
+        <div class="card mb-4 print-top">
             <div class="card-body">
                 <b>System is secure and properly installed. Please make suggestions below. We encourage positive and negative remarks.</b>
             </div>

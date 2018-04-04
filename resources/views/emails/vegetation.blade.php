@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Vegetation</h1>
-    <p>Send herbecide</p>
+    <div class="h1">Email</div>
 </body>
 </html>

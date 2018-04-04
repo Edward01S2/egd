@@ -58,7 +58,7 @@ class TicketServiceProvider extends ServiceProvider
 
             if($ticket->vegetation === "2" && $ticket->site_arm === "1") {
 
-                $path = storage_path('app/public/' . $ticket->ticket_num . '/ticket.pdf');
+                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
@@ -70,7 +70,7 @@ class TicketServiceProvider extends ServiceProvider
             //Vegetation is high and the site cannot arm
             if($ticket->vegetation === "2" && $ticket->site_arm === "0") {
 
-                $path = storage_path('app/public/' . $ticket->ticket_num . '/ticket.pdf');
+                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
@@ -88,15 +88,34 @@ class TicketServiceProvider extends ServiceProvider
             Browsershot::url($url)
                 ->emulateMedia('print')
                 ->save($path);
+
+            \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket) {
+                $m->to('eshannon@afterhoursupgrades.com');
+                $m->subject('Ticket # '. $ticket->ticket_num . ' - Intrusion');
+                $m ->attach($path);
+            });
         });
 
         PST::created(function($ticket) {
+            //Create pdf
             $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_post.pdf');
             $url = url('/pst/' . $ticket->ticket_num);
             //dd($url);
             Browsershot::url($url)
                 ->emulateMedia('print')
                 ->save($path);
+
+            //Automated email
+
+            $sv = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_sv.pdf');
+
+            \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket, $sv) {
+                $m->to('eshannon@afterhoursupgrades.com');
+                $m->subject('Ticket # '. $ticket->ticket_num . ' - Post-Install');
+                $m ->attach($path);
+                $m->attach($sv);
+            });
+            
         });
 
         Exposure::created(function($ticket) {
@@ -106,6 +125,15 @@ class TicketServiceProvider extends ServiceProvider
             Browsershot::url($url)
                 ->emulateMedia('print')
                 ->save($path);
+
+            $sv = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_sv.pdf');
+
+            \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket, $sv) {
+                $m->to('eshannon@afterhoursupgrades.com');
+                $m->subject('Ticket # '. $ticket->ticket_num . ' - Exposure');
+                $m ->attach($path);
+                $m->attach($sv);
+            });
         });
 
         IST::created(function($ticket) {
@@ -115,6 +143,12 @@ class TicketServiceProvider extends ServiceProvider
             Browsershot::url($url)
                 ->emulateMedia('print')
                 ->save($path);
+
+            \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket) {
+                $m->to('eshannon@afterhoursupgrades.com');
+                $m->subject('Ticket # '. $ticket->ticket_num . ' - Pre-Install Ticket');
+                $m ->attach($path);
+            });
         });
 
         Addon::created(function($ticket) {
@@ -124,6 +158,12 @@ class TicketServiceProvider extends ServiceProvider
             Browsershot::url($url)
                 ->emulateMedia('print')
                 ->save($path);
+
+            \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket) {
+                $m->to('eshannon@afterhoursupgrades.com');
+                $m->subject('Ticket # '. $ticket->ticket_num . ' - Addon');
+                $m ->attach($path);
+            });
         });
     }
 

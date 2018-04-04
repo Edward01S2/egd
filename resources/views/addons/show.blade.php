@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mb-3 text-center">Add On Quote Ticket</h2>
+        <h2 class="mb-3 text-center print-top">Add On Quote Ticket</h2>
         <form method="POST" id="form_ticket" action="/addon" enctype="multipart/form-data">
 
             {{ csrf_field() }}
@@ -273,11 +273,11 @@
                     <td>Number of outdoor boxes to be installed at time of add-on</td>
                     <td><textarea name="check7">{{ $addon->check7 }}</textarea></td>
                 </tr>
-                <tr>
+                <tr class="force-break">
                     <td>Indicate Last date signal sent</td>
                     <td><textarea name="check8">{{ $addon->check8 }}</textarea></td>
                 </tr>
-                <tr>
+                <tr class="print-top">
                     <td>Test Phone line or cell unit to confirm operational</td>
                     <td><textarea name="check9">{{ $addon->check9 }}</textarea></td>
                 </tr>
@@ -327,7 +327,7 @@
 
         <hr class="mb-4">
 
-        <table class="table table-bordered addon-table mb-4">
+        <table class="table table-bordered addon-table mb-4 force-break">
             <thead>
                 <tr>
                     <th class="w-50">Tech Add-on Quote Check List</th>
@@ -384,7 +384,7 @@
             </tbody>
         </table>
 
-        <div id="sig-block" class="row mb-3">
+        <div id="sig-block" class="row mb-3 print-head">
 
             <div class="col-6">
                 <div class="wrapper">
@@ -412,7 +412,7 @@
         </div>
         
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+
         </form>
 
     </div> <!-- col-12 -->

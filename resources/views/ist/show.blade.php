@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mb-3 text-center">Pre-Install Ticket</h2>
+        <h2 class="mb-3 text-center print-top">Pre-Install Ticket</h2>
         <form method="POST" id="form_ticket" action="/ist" enctype="multipart/form-data">
 
             {{ csrf_field() }}
@@ -264,7 +264,7 @@
             
         </div>
 
-        <div class="row">
+        <div class="row force-break">
 
             <div class="col-12">
                 <div class="input-group mb-3">
@@ -279,7 +279,7 @@
             
         </div>
 
-        <div class="row">
+        <div class="row print-top">
 
             <div class="col-12">
                 <div class="input-group mb-3">

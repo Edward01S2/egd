@@ -86,4 +86,8 @@
     .print-head {
         margin-top: 25px;
     }
+
+    .print-top {
+        margin-top: 50px;
+    }
 }
