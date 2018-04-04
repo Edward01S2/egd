@@ -108,6 +108,7 @@ class IntrusionController extends Controller
             'solution' => request('solution'),
             'stname' => request('stname'),
             'service_qual' => request('service_qual'),
+            'tt' => request('tt'),
 
         ]);
 

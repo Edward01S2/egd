@@ -407,6 +407,7 @@
 
         
         <hr class="mb-4">
+        <input type="hidden" name="tt" value="Pre-Install"/>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
         </form>
 

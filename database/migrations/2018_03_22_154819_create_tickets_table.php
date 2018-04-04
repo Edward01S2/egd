@@ -62,6 +62,7 @@ class CreateTicketsTable extends Migration
             $table->integer('fence_dep')->nullable();
             $table->string('stname')->nullable();
             $table->integer('service_qual');
+            $table->string('tt');
             $table->timestamps();
         });
     }

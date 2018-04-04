@@ -53,6 +53,7 @@ class CreateIntrusionsTable extends Migration
             $table->text('solution')->nullable();
             $table->string('stname')->nullable();
             $table->integer('service_qual')->nullable();
+            $table->string('tt');
             $table->timestamps();
         });
     }

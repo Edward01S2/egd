@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\Addon;
+use App\IST;
+use App\PST;
+use App\Exposure;
+use App\Intrusion;
 use View;
 use File;
 use Illuminate\Support\Facades\Storage;
@@ -36,8 +41,17 @@ class TicketsController extends Controller
 
     public function index() {
 
-        $tickets = Ticket::all();
-        return view('tickets.index', compact('tickets'));
+        // $tickets = Ticket::all();
+        // return view('tickets.index', compact('tickets'));
+
+        $sv = Ticket::all();
+        $addon = Addon::all();
+        $expo = Exposure::all();
+        $intr = Intrusion::all();
+        $post = PST::all();
+        $inst = IST::all();
+
+        return view('tickets.index', compact('sv', 'addon', 'expo', 'intr', 'post', 'inst'));
     }
 
     public function show(Ticket $ticket) {
@@ -82,7 +96,8 @@ class TicketsController extends Controller
         $sel_options = $this->arrays();
 
         if ($ticket_num = request('ticket_num')) {
-            return view('tickets.create', compact('sel_options', 'ticket_num'));
+            $ticket_type = request('ticket_type');
+            return view('tickets.create', compact('sel_options', 'ticket_num', 'ticket_type'));
         }
         else {
             return view('tickets.create', compact('sel_options'));
@@ -206,10 +221,22 @@ class TicketsController extends Controller
             'fence_dep' => request('fence_dep'),
             'stname' => request('stname'),
             'service_qual' => request('service_qual'),
+            'tt' => request('tt'),
 
         ]);
 
-        return redirect('/');
+        //Redirect to other tickets if need be
+
+        if(request('ticket_type') == 'Post-Install') {
+            return redirect('/pst/create');
+        }
+        elseif(request('ticket_type') == 'Exposure') {
+            return redirect('/exposure/create');
+        }
+        else {
+            return redirect('/');
+        }
+
     }
 
 }

@@ -70,6 +70,7 @@ class PSTController extends Controller
             'quest6' => request('quest6'),
             'quest7' => request('quest7'),
             'quest8' => request('quest8'),
+            'tt' => request('tt'),
 
         ]);
 

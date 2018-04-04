@@ -73,6 +73,7 @@ class CreateAddonTable extends Migration
             $table->text('addon11')->nullable();
             $table->string('stname')->nullable();
             $table->string('customer')->nullable();
+            $table->string('tt');
             $table->timestamps();
         });
     }

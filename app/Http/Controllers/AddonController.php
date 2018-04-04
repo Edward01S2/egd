@@ -120,6 +120,7 @@ class AddonController extends Controller
             'addon11' => request('addon11'),
             'stname' => request('stname'),
             'customer' => request('customer'),
+            'tt' => request('tt'),
         ]);
 
         return redirect('/');

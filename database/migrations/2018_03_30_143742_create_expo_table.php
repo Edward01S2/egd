@@ -38,6 +38,7 @@ class CreateExpoTable extends Migration
             $table->text('assess')->nullable();
             $table->text('add_comm')->nullable();
             $table->integer('fence_depart')->nullable();
+            $table->string('tt');
             $table->timestamps();
         });
     }

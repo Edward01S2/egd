@@ -63,6 +63,7 @@ class CreateIstTable extends Migration
             $table->string('add4')->nullable();
             $table->string('add5')->nullable();
             $table->string('add6')->nullable();
+            $table->string('tt');
             $table->timestamps();
         });
     }

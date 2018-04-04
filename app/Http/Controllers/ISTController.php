@@ -88,6 +88,7 @@ class ISTController extends Controller
             'add4' => request('add4'),
             'add5' => request('add5'),
             'add6' => request('add6'),
+            'tt' => request('tt'),
         ]);
 
         return redirect('/');

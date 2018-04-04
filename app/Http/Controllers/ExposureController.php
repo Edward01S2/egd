@@ -83,6 +83,7 @@ class ExposureController extends Controller
             'assess' => request('assess'),
             'add_comm' => request('add_comm'), 
             'fence_depart' => request('fence_depart'),
+            'tt' => request('tt'),
 
         ]);
 

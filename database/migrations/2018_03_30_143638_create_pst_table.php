@@ -33,6 +33,7 @@ class CreatePstTable extends Migration
             $table->text('quest6')->nullable();
             $table->text('quest7')->nullable();
             $table->text('quest8')->nullable();
+            $table->string('tt');
             $table->timestamps();
         });
     }

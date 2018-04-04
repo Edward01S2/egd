@@ -31,15 +31,15 @@
                                 <div class="col-sm-8">
                                     <select id="ticketsel" name="ticketsel" class="custom-select form-control">
                                         <option selected="selected" value="/tickets/create">Service Ticket</option>
-                                        <option value="/pst/create">Post-Install</option>
-                                        <option value="/exposure/create">Exposure</option>
+                                        <option value="/tickets/create">Post-Install</option>
+                                        <option value="/tickets/create">Exposure</option>
                                         <option value="/addon/create">Add-on Quote</option>
                                         <option value="/ist/create">Pre-Install</option>
                                         <option value="/intrusion/create">Intrusion</option>
                                     </select>
                                 </div>    
                             </div>
-
+                            <input type="hidden" id="ticket_type" name="ticket_type" value=""/>
                             <button class="btn btn-primary btn-lg btn-block mt-4" type="submit">Submit</button>
 
                         </div>
@@ -57,7 +57,12 @@
 
 <script>
     document.getElementById('ticketsel').onchange = function() {
+        var sel = document.getElementById('ticketsel');
+        var text = sel.options[sel.selectedIndex].text;
         document.getElementById('ticket-form').action = this.value;
+        document.getElementById('ticket_type').value = text;
+
+        console.log(text);
     };
 </script>
 
