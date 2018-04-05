@@ -41,6 +41,7 @@ class CreateIntrusionsTable extends Migration
             $table->string('zone12')->nullable();
             $table->string('system_type')->nullable();
             $table->string('key_num')->nullable();
+            $table->string('part_num')->nullable();
             $table->string('batt_volt')->nullable();
             $table->string('gsm')->nullable();
             $table->integer('ac_power')->nullable();

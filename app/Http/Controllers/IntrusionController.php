@@ -7,6 +7,7 @@ use App\Intrusion;
 use File;
 use Illuminate\Support\Facades\Storage;
 use Response;
+use DB;
 
 class IntrusionController extends Controller
 {
@@ -40,10 +41,22 @@ class IntrusionController extends Controller
 
     public function create() {
 
+        $ticket_num = request('ticket_num');
+
+        //Queries to get company info from Sedona Server
+        $svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first();
+        $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+        $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+        //dd($alarm);
+
+        $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
+        $bus_name = trim($bus_tmp);
+        //dd($bus_trim);
+
         $sel_options = $this->arrays();
 
         if ($ticket_num = request('ticket_num')) {
-            return view('intrusions.create', compact('ticket_num', 'sel_options'));
+            return view('intrusions.create', compact('ticket_num', 'sel_options', 'svc', 'bus', 'alarm', 'bus_name'));
         }
         else {
             return view('intrusions.create', compact('sel_options'));
@@ -97,6 +110,7 @@ class IntrusionController extends Controller
             'zone12' => request('zone12'),
             'system_type' => request('system_type'),
             'key_num' => request('key_num'),
+            'part_num' => request('part_num'),
             'batt_volt' => request('batt_volt'),
             'gsm' => request('gsm'),
             'ac_power' => request('ac_power'),

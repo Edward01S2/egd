@@ -12,8 +12,7 @@ use Response;
 use View;
 use File;
 use Illuminate\Support\Facades\Storage;
-use Spatie\Browsershot\Browsershot;
-use ImageOptimizer;
+use DB;
 
 
 class TicketsController extends Controller
@@ -106,10 +105,21 @@ class TicketsController extends Controller
     public function create() {
 
         $sel_options = $this->arrays();
+        $ticket_num = request('ticket_num');
+
+        //Queries to get company info from Sedona Server
+        $svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first();
+        $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+        $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+        //dd($alarm);
+
+        $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
+        $bus_name = trim($bus_tmp);
+        //dd($bus_trim);
 
         if ($ticket_num = request('ticket_num')) {
             $ticket_type = request('ticket_type');
-            return view('tickets.create', compact('sel_options', 'ticket_num', 'ticket_type'));
+            return view('tickets.create', compact('sel_options', 'ticket_num', 'ticket_type', 'svc', 'bus', 'alarm', 'bus_name'));
         }
         else {
             return view('tickets.create', compact('sel_options'));
