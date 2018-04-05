@@ -62,7 +62,7 @@ class TicketServiceProvider extends ServiceProvider
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
-                    $m->subject('Ticket # '. $ticknum . ' - Send Herbicide');
+                    $m->subject('Ticket #'. $ticknum . ' - Send Herbicide');
                     $m ->attach($path);
                 });
             }
@@ -74,7 +74,7 @@ class TicketServiceProvider extends ServiceProvider
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
-                    $m->subject('Ticket # '. $ticknum . ' - Customer Not Ready');
+                    $m->subject('Ticket #'. $ticknum . ' - Customer Not Ready');
                     $m ->attach($path);
                 });
             }
@@ -85,7 +85,7 @@ class TicketServiceProvider extends ServiceProvider
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
-                    $m->subject('Ticket # '. $ticknum . ' - Customer Not Ready: Debris');
+                    $m->subject('Ticket #'. $ticknum . ' - Customer Not Ready: Debris');
                     $m ->attach($path);
                 });
             }
@@ -96,7 +96,7 @@ class TicketServiceProvider extends ServiceProvider
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
-                    $m->subject('Ticket # '. $ticknum . ' - Customer Not Ready: Need Repair');
+                    $m->subject('Ticket #'. $ticknum . ' - Customer Not Ready: Need Repair');
                     $m ->attach($path);
                 });
             }
@@ -107,7 +107,7 @@ class TicketServiceProvider extends ServiceProvider
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
-                    $m->subject('Ticket # '. $ticknum . ' - Customer Not Ready: Other');
+                    $m->subject('Ticket #'. $ticknum . ' - Customer Not Ready: Other');
                     $m ->attach($path);
                 });
             }
@@ -126,7 +126,7 @@ class TicketServiceProvider extends ServiceProvider
 
             \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket) {
                 $m->to('eshannon@afterhoursupgrades.com');
-                $m->subject('Ticket # '. $ticket->ticket_num . ' - Intrusion');
+                $m->subject('Ticket #'. $ticket->ticket_num . ' - Intrusion');
                 $m ->attach($path);
             });
         });
@@ -146,7 +146,7 @@ class TicketServiceProvider extends ServiceProvider
 
             \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket, $sv) {
                 $m->to('eshannon@afterhoursupgrades.com');
-                $m->subject('Ticket # '. $ticket->ticket_num . ' - Post-Install');
+                $m->subject('Ticket #'. $ticket->ticket_num . ' - Post-Install');
                 $m ->attach($path);
                 $m->attach($sv);
             });
@@ -165,7 +165,7 @@ class TicketServiceProvider extends ServiceProvider
 
             \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket, $sv) {
                 $m->to('eshannon@afterhoursupgrades.com');
-                $m->subject('Ticket # '. $ticket->ticket_num . ' - Exposure');
+                $m->subject('Ticket #'. $ticket->ticket_num . ' - Exposure');
                 $m ->attach($path);
                 $m->attach($sv);
             });
@@ -181,7 +181,7 @@ class TicketServiceProvider extends ServiceProvider
 
             \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket) {
                 $m->to('eshannon@afterhoursupgrades.com');
-                $m->subject('Ticket # '. $ticket->ticket_num . ' - Pre-Install Ticket');
+                $m->subject('Ticket #'. $ticket->ticket_num . ' - Pre-Install Ticket');
                 $m ->attach($path);
             });
         });
@@ -196,7 +196,7 @@ class TicketServiceProvider extends ServiceProvider
 
             \Mail::send('emails.vegetation', [], function($m) use ($path, $ticket) {
                 $m->to('eshannon@afterhoursupgrades.com');
-                $m->subject('Ticket # '. $ticket->ticket_num . ' - Addon');
+                $m->subject('Ticket #' . $ticket->ticket_num . ' - Addon');
                 $m ->attach($path);
             });
         });

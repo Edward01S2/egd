@@ -17,7 +17,7 @@ class CreatePstTable extends Migration
             $table->increments('id');
             $table->integer('ticket_num');
             $table->date('date')->nullable();
-            $table->integer('acct_num')->nullable();
+            $table->string('acct_num')->nullable();
             $table->string('tech')->nullable();;
             $table->string('installer')->nullable();;
             $table->string('cust_name')->nullable();

@@ -18,7 +18,7 @@ class CreateIntrusionsTable extends Migration
             $table->increments('id');
             $table->integer('ticket_num');
             $table->date('visit_date')->nullable();
-            $table->integer('acct_num')->nullable();
+            $table->string('acct_num')->nullable();
             $table->time('arrive_time')->nullable();
             $table->string('serv_tech');
             $table->time('depart_time')->nullable();
