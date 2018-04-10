@@ -26,25 +26,20 @@ class TicketServiceProvider extends ServiceProvider
     {
         Ticket::created(function($ticket) {
 
-            $store = '/public/' . $ticket->ticket_num . '/';
-            // //dd($path);
-            
-            // //dd($path);
-            // //$files = Storage::files($store);
-            // //dd($files);
+            $store = '/public/' . $ticket->ticket_num . '/pics/';
+
             if($files = Storage::files($store)) {
-                //dd($files);
                 foreach($files as $key ) {
-                    //dd$key;
                     $path = storage_path('app/' . $key);
-                    //$path = ('/storage/app/' . $key);
-                    //dd($path);
                     ImageOptimizer::optimize($path);
-                    //app(Spatie\ImageOptimizer\OptimizerChain::class)->optimize($path);
                 }
+                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_sv_pics.pdf');
+            }
+            else {
+                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_sv.pdf');
             }
 
-            $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticket->ticket_num . '_sv.pdf');
+            
             $url = url('/tickets/' . $ticket->ticket_num);
             //dd($url);
             Browsershot::url($url)
@@ -58,7 +53,7 @@ class TicketServiceProvider extends ServiceProvider
 
             if($ticket->vegetation === "2" && $ticket->site_arm === "1") {
 
-                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
+                //$path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
@@ -70,7 +65,7 @@ class TicketServiceProvider extends ServiceProvider
             //Vegetation is high and the site cannot arm
             if($ticket->vegetation === "2" && $ticket->site_arm === "0") {
 
-                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
+                //$path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
@@ -81,7 +76,7 @@ class TicketServiceProvider extends ServiceProvider
 
             if($ticket->followup === "1") {
 
-                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
+                //$path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
@@ -92,7 +87,7 @@ class TicketServiceProvider extends ServiceProvider
 
             if($ticket->followup === "2") {
 
-                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
+                //$path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');
@@ -103,7 +98,7 @@ class TicketServiceProvider extends ServiceProvider
 
             if($ticket->followup === "3") {
 
-                $path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
+                //$path = storage_path('app/public/' . $ticket->ticket_num . '/' . $ticknum .'_sv.pdf');
 
                 \Mail::send('emails.vegetation', [], function($m) use ($path, $ticknum) {
                     $m->to('eshannon@afterhoursupgrades.com');

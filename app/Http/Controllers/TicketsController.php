@@ -60,34 +60,14 @@ class TicketsController extends Controller
 
         $sel_options = $this->arrays();
         $dest = '/public/' . $ticket->ticket_num . '/';
-        //$files = Storage::files($dest);
-        //dd($files);
 
-        if($files = Storage::files($dest . '/')) {
+        if($files = Storage::files($dest . '/pics')) {
             foreach($files as $key => $value) {
                 $path_parts = pathinfo($value, PATHINFO_BASENAME);
                 $uploads[] = $path_parts;
-
-                if(preg_match('/signature.jpg/', $value)) {
-                    unset($uploads[$key]);
-                }
-                if(preg_match('/sv.pdf/', $value)) {
-                    unset($uploads[$key]);
-                }
-                if(preg_match('/addon_sig.jpg/', $value)) {
-                    unset($uploads[$key]);
-                }
-                if(preg_match('/expo_sig.jpg/', $value)) {
-                    unset($uploads[$key]);
-                }
-                if(preg_match('/intrusion_sig.jpg/', $value)) {
-                    unset($uploads[$key]);
-                }
             }
 
         }
-
-        //dd($uploads);
 
         return view('tickets.show', compact('ticket', 'sel_options', 'uploads'));
     }
@@ -98,9 +78,10 @@ class TicketsController extends Controller
         $ticket_num = request('ticket_num');
 
         //Queries to get company info from Sedona Server
-        $svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first();
-        $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
-        $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+        if($svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first()) {
+            $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+            $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+        }
         //dd($alarm);
 
         $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
@@ -166,8 +147,8 @@ class TicketsController extends Controller
         $files = request('files');
         if(!empty($files)) {
             for($i = 0; $i < count($files); $i++) {
-                
-                Storage::put($dest, $files[$i]);
+                $pic_dest = '/public/' . request('ticket_num') . '/pics';
+                Storage::put($pic_dest, $files[$i]);
             }
         }
 
@@ -256,7 +237,14 @@ class TicketsController extends Controller
 
     public function download(Ticket $ticket) {
         $ticknum = $ticket->ticket_num;
-        $tickname = $ticknum . '_sv.pdf';
+        $store = '/public/' . $ticket->ticket_num . '/';
+        if($files = Storage::files($store)) {
+            $tickname = $ticknum . '_sv_pics.pdf';
+        }
+        else {
+            $tickname = $ticknum . '_sv.pdf';
+        }
+        
         $file = storage_path() . '/app/public/' . $ticknum . '/' . $tickname;
         //dd($file);
 
