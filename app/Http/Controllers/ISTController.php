@@ -111,7 +111,10 @@ class ISTController extends Controller
             'tt' => request('tt'),
         ]);
 
-        return redirect('/');
+        $ticket_num = request('ticket_num');
+        $type = 'ist';
+        
+        return redirect('/complete')->with(compact('ticket_num', 'type'));
     }
 
     public function download(IST $ist) {

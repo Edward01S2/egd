@@ -71,7 +71,7 @@ class TicketsController extends Controller
                 if(preg_match('/signature.jpg/', $value)) {
                     unset($uploads[$key]);
                 }
-                if(preg_match('/ticket.pdf/', $value)) {
+                if(preg_match('/sv.pdf/', $value)) {
                     unset($uploads[$key]);
                 }
                 if(preg_match('/addon_sig.jpg/', $value)) {
@@ -85,21 +85,11 @@ class TicketsController extends Controller
                 }
             }
 
-            $len = count($uploads);
-            if($len == 1) {
-                $upl_one = array_slice($uploads, 0, round($len / 2));
-                $upl_two = [];
-            }
-            else {
-                $upl_one = array_slice($uploads, 0, round($len / 2));
-                $upl_two = array_slice($uploads, $len / 2);
-            }
-
-            //dd($upl_one);
-
         }
 
-        return view('tickets.show', compact('ticket', 'sel_options', 'upl_one', 'upl_two'));
+        //dd($uploads);
+
+        return view('tickets.show', compact('ticket', 'sel_options', 'uploads'));
     }
 
     public function create() {
@@ -249,6 +239,7 @@ class TicketsController extends Controller
         $phone = request('phone');
         $arr = request('arrive_time');
         $dep = request('depart_time');
+        $type = 'tickets';
 
         if(request('ticket_type') == 'Post-Install') {
             return redirect('/pst/create')->with(compact('ticket_num', 'acct_num', 'tech', 'cust', 'city', 'state', 'date'));
@@ -257,7 +248,8 @@ class TicketsController extends Controller
             return redirect('/exposure/create')->with(compact('ticket_num', 'acct_num', 'tech', 'cust', 'city', 'state', 'date', 'contact', 'phone', 'arr', 'dep'));
         }
         else {
-            return redirect('/');
+            //dd($ticket);
+            return redirect('/complete')->with(compact('ticket_num', 'type'));
         }
 
     }

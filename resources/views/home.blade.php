@@ -3,6 +3,9 @@
 @section('content')
 
     <div class="row justify-content-center">
+        <div class="col-md-4">
+            <img class="img-fluid mb-4" src="{{ asset('storage/logo.png') }}" alt="">
+        </div>
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header text-center">Create a New Ticket</div>

@@ -75,7 +75,10 @@ class PSTController extends Controller
 
         ]);
 
-        return redirect('/');
+        $ticket_num = request('ticket_num');
+        $type = 'pst';
+        
+        return redirect('/complete')->with(compact('ticket_num', 'type'));
     }
 
     public function download(PST $pst) {

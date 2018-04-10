@@ -706,23 +706,30 @@
 
         </div>
 
-        @if(!empty($upl_one))
+        @if(!empty($uploads))
 
         <hr class=""/>
             <h4>UPLOADED IMAGES</h4>
         <hr />
 
-        <div class="row">
-            <div class="col"> 
-                @foreach($upl_one as $img)
-                    <img src = "{{ asset('storage/'. $ticket->ticket_num . '/' . $img) }}" alt="" class="img-fluid mb-4">
-                @endforeach
-            </div>
-            <div class="col">
-                @foreach($upl_two as $img)
-                    <img src = "{{ asset('storage/'. $ticket->ticket_num . '/' . $img) }}" alt="" class="img-fluid mb-4">
-                @endforeach
-            </div>
+        
+            <?php $i=0; ?>
+            @foreach($uploads as $img)
+                <?php $i++; ?>
+                @if($i % 2 == 0)
+                    <div class="row force-break">
+                        <div class="col-12"> 
+                            <img src = "{{ asset('storage/'. $ticket->ticket_num . '/' . $img) }}" alt="" class="img-fluid mb-4">
+                        </div>
+                    </div>
+                @else
+                    <div class="row print-top">
+                        <div class="col-12"> 
+                            <img src = "{{ asset('storage/'. $ticket->ticket_num . '/' . $img) }}" alt="" class="img-fluid mb-4">
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
 
         @endif

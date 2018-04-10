@@ -88,7 +88,10 @@ class ExposureController extends Controller
 
         ]);
 
-        return redirect('/');
+        $ticket_num = request('ticket_num');
+        $type = 'exposure';
+        
+        return redirect('/complete')->with(compact('ticket_num', 'type'));
     }
 
     public function download(Exposure $expo) {

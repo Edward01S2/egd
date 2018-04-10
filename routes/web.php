@@ -56,8 +56,8 @@ Route::post('/addon', 'AddonController@store');
 Route::get('/addon/{addon}', 'AddonController@show');
 Route::get('/addon/{addon}/download', 'AddonController@download');
 
-Route::get('/about', function () {
-    return view('about');
+Route::get('/complete', function () {
+    return view('complete');
 });
 
 Auth::routes();

@@ -127,7 +127,10 @@ class IntrusionController extends Controller
 
         ]);
 
-        return redirect('/');
+        $ticket_num = request('ticket_num');
+        $type = 'intrusion';
+        
+        return redirect('/complete')->with(compact('ticket_num', 'type'));
 
     }
 
