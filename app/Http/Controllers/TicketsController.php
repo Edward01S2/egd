@@ -13,13 +13,14 @@ use View;
 use File;
 use Illuminate\Support\Facades\Storage;
 use DB;
+use Auth;
 
 
 class TicketsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'clearance'])->except('show');
+        $this->middleware('auth')->except('show');
     }
 
     function arrays() {
@@ -43,15 +44,25 @@ class TicketsController extends Controller
 
     public function index() {
 
-        // $tickets = Ticket::all();
-        // return view('tickets.index', compact('tickets'));
+        $user = Auth::user();
 
-        $sv = Ticket::all();
-        $addon = Addon::all();
-        $expo = Exposure::all();
-        $intr = Intrusion::all();
-        $post = PST::all();
-        $inst = IST::all();
+        if($user->hasPermissionTo('View All Tickets')) {
+            $sv = Ticket::all();
+            $addon = Addon::all();
+            $expo = Exposure::all();
+            $intr = Intrusion::all();
+            $post = PST::all();
+            $inst = IST::all();
+        }
+        else {
+            $name = $user->name;
+            $sv = Ticket::where('serv_tech', $name)->get();
+            $addon = Addon::where('serv_tech', $name)->get();
+            $expo = Exposure::where('serv_tech', $name)->get();
+            $intr = Intrusion::where('serv_tech', $name)->get();
+            $post = PST::where('tech', $name)->get();
+            $inst = IST::where('serv_tech', $name)->get();
+        }
 
         return view('tickets.index', compact('sv', 'addon', 'expo', 'intr', 'post', 'inst'));
     }
@@ -81,11 +92,13 @@ class TicketsController extends Controller
         if($svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first()) {
             $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
             $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+
+            $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
+            $bus_name = trim($bus_tmp);
         }
         //dd($alarm);
 
-        $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
-        $bus_name = trim($bus_tmp);
+
         //dd($bus_trim);
 
         if ($ticket_num = request('ticket_num')) {

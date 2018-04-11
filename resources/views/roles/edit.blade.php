@@ -21,7 +21,7 @@
 
     @endforeach
     <br>
-    {{ Form::submit('Edit', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
 
     {{ Form::close() }}    
 </div>

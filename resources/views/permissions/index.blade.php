@@ -2,12 +2,13 @@
 
 @section ('content')
 
-<div class="col-lg-10 col-lg-offset-1">
-    <h1><i class="fa fa-key"></i>Available Permissions
+<div class="col-md-12">
+    <div class="d-flex align-items-center mb-2">
+        <h1 class="mr-auto">Available Permissions</h1>
+        <a href="{{ route('users.index') }}" class="btn btn-outline-secondary mr-2">Users</a>
+        <a href="{{ route('roles.index') }}" class="btn btn-outline-secondary">Roles</a>
+    </div>
 
-    <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
-    <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a></h1>
-    <hr>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
 
@@ -22,7 +23,7 @@
                 <tr>
                     <td>{{ $permission->name }}</td> 
                     <td>
-                    <a href="{{ URL::to('permissions/'.$permission->id.'/edit') }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+                    <a href="{{ URL::to('permissions/'.$permission->id.'/edit') }}" class="btn btn-info float-left mr-2">Edit</a>
 
                     {!! Form::open(['method' => 'DELETE', 'route' => ['permissions.destroy', $permission->id] ]) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}

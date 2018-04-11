@@ -2,9 +2,9 @@
 
 @section ('content')
 
-<div class='col-lg-4 col-lg-offset-4'>
+<div class='col-md-6 offset-md-3'>
 
-    <h1><i class='fa fa-user-plus'></i> Edit {{$user->name}}</h1>
+    <h1>{{$user->name}}</h1>
     <hr>
 
     {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}{{-- Form model binding to automatically populate our fields with user data --}}
@@ -29,7 +29,7 @@
         @endforeach
     </div>
 
-    <div class="form-group">
+    {{-- <div class="form-group">
         {{ Form::label('password', 'Password') }}<br>
         {{ Form::password('password', array('class' => 'form-control')) }}
 
@@ -39,9 +39,9 @@
         {{ Form::label('password', 'Confirm Password') }}<br>
         {{ Form::password('password_confirmation', array('class' => 'form-control')) }}
 
-    </div>
+    </div> --}}
 
-    {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
 
     {{ Form::close() }}
 

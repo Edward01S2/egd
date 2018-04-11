@@ -38,7 +38,7 @@
 
                 <div class="mb-3">
                     <label for="serv_tech">Technician</label>
-                    <input type="text" class="form-control" name="tech" placeholder="" value="@if (session('tech')) {{ session('tech') }} @endif">
+                    <input type="text" class="form-control" name="tech" placeholder="" value="@if (session('tech')) {{ session('tech') }} @endif" readonly="readonly">
                     <div class="invalid-feedback">
     
                     </div>
