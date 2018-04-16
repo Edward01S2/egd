@@ -70,15 +70,17 @@ class TicketsController extends Controller
     public function show(Ticket $ticket) {
 
         $sel_options = $this->arrays();
-        $dest = '/public/' . $ticket->ticket_num . '/';
+        $dest = '/public/' . $ticket->ticket_num . '/pics/';
 
-        if($files = Storage::files($dest . '/pics')) {
+        if($files = Storage::files($dest)) {
             foreach($files as $key => $value) {
                 $path_parts = pathinfo($value, PATHINFO_BASENAME);
                 $uploads[] = $path_parts;
             }
 
         }
+
+        //dd($uploads);
 
         return view('tickets.show', compact('ticket', 'sel_options', 'uploads'));
     }
@@ -250,7 +252,7 @@ class TicketsController extends Controller
 
     public function download(Ticket $ticket) {
         $ticknum = $ticket->ticket_num;
-        $store = '/public/' . $ticket->ticket_num . '/';
+        $store = '/public/' . $ticket->ticket_num . '/pics/';
         if($files = Storage::files($store)) {
             $tickname = $ticknum . '_sv_pics.pdf';
         }

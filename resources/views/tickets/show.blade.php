@@ -719,13 +719,13 @@
                 @if($i % 2 == 0)
                     <div class="row force-break">
                         <div class="col-12"> 
-                            <img src = "{{ asset('storage/'. $ticket->ticket_num . '/' . $img) }}" alt="" class="img-fluid mb-4">
+                            <img src = "{{ asset('storage/'. $ticket->ticket_num . '/pics/' . $img) }}" alt="" class="img-fluid mb-4">
                         </div>
                     </div>
                 @else
                     <div class="row print-top">
                         <div class="col-12"> 
-                            <img src = "{{ asset('storage/'. $ticket->ticket_num . '/' . $img) }}" alt="" class="img-fluid mb-4">
+                            <img src = "{{ asset('storage/'. $ticket->ticket_num . '/pics/' . $img) }}" alt="" class="img-fluid mb-4">
                         </div>
                     </div>
                 @endif
