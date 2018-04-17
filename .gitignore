@@ -12,4 +12,3 @@ npm-debug.log
 yarn-error.log
 /storage/app/public
 .env
-/config/database.php
