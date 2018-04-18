@@ -24,7 +24,7 @@
                             <div class="form-group row">
                                 <label class="col-form-label col-sm-4" for="ticket_num">Ticket #</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="ticket_num" placeholder="" value="" >
+                                    <input type="text" class="form-control" name="ticket_num" placeholder="" value="" required>
                                     <div class="invalid-feedback">Ticket # is required.</div>
                                 </div>
                             </div>

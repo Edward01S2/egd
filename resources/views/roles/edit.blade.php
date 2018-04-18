@@ -22,6 +22,7 @@
     @endforeach
     <br>
     {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
+    <a href="/roles" class="btn btn-link">Back</a>
 
     {{ Form::close() }}    
 </div>

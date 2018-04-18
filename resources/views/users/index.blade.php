@@ -13,22 +13,22 @@
         <table class="table table-bordered table-striped">
 
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>User Roles</th>
-                    <th>Operations</th>
+                <tr class="d-flex">
+                    <th class="col-3">Name</th>
+                    <th class="col-4">Email</th>
+                    <th class="col-2">User Roles</th>
+                    <th class="col-3">Operations</th>
                 </tr>
             </thead>
 
             <tbody>
                 @foreach ($users as $user)
-                <tr>
+                <tr class="d-flex">
 
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{  $user->roles()->pluck('name')->implode(' ') }}</td>{{-- Retrieve array of roles associated to a user and convert to string --}}
-                    <td>
+                    <td class="col-3">{{ $user->name }}</td>
+                    <td class="col-4">{{ $user->email }}</td>
+                    <td class="col-2">{{  $user->roles()->pluck('name')->implode(' ') }}</td>{{-- Retrieve array of roles associated to a user and convert to string --}}
+                    <td class="col-3">
                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info float-left mr-2">Edit</a>
 
                     {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id] ]) !!}

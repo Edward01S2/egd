@@ -42,6 +42,7 @@
     </div> --}}
 
     {{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
+    <a href="/users" class="btn btn-link">Back</a>
 
     {{ Form::close() }}
 
