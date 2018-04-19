@@ -32,17 +32,17 @@ class AddonController extends Controller
     public function create() {
         $qual_options = array("Choose Rank", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
 
-        if($ticket_num = request('ticket_num')) {
+        $ticket_num = request('ticket_num');
 
             //Queries to get company info from Sedona Server
-            $svc = DB::connection('sqlsrv_final')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first();
+        if($svc = DB::connection('sqlsrv_final')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first()) {
             $bus = DB::connection('sqlsrv_final')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
             $alarm = DB::connection('sqlsrv_final')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
             //dd($alarm);
 
             $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
             $bus_name = trim($bus_tmp);
-            //dd($bus_trim);
+            //dd($bus_trim);          
 
             return view('addons.create', compact('ticket_num', 'qual_options', 'svc', 'bus', 'alarm', 'bus_name'));
         }

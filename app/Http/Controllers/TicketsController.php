@@ -97,13 +97,7 @@ class TicketsController extends Controller
 
             $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
             $bus_name = trim($bus_tmp);
-        }
-        //dd($alarm);
 
-
-        //dd($bus_trim);
-
-        if ($ticket_num = request('ticket_num')) {
             $ticket_type = request('ticket_type');
             return view('tickets.create', compact('sel_options', 'ticket_num', 'ticket_type', 'svc', 'bus', 'alarm', 'bus_name'));
         }
