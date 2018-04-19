@@ -67,6 +67,17 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_SQL_HOST', '192.168.7.23'),
+            'port' => env('DB_SQL_PORT', '1433'),
+            'database' => env('DB_SQL_DATABASE', 'EGDTickets'),
+            'username' => env('DB_SQL_USERNAME', 'edward'),
+            'password' => env('DB_SQL_PASSWORD', 'reClass&1395'),
+            'charset' => 'utf8',
+            'prefix' => '',
+        ],
+
         'sqlsrv_final' => [
             'driver' => 'sqlsrv',
             'host' => env('DB_SQL_HOST', '192.168.7.23'),
