@@ -67,7 +67,7 @@ return [
             'sslmode' => 'prefer',
         ],
 
-        'sqlsrv' => [
+        'sqlsrv_final' => [
             'driver' => 'sqlsrv',
             'host' => env('DB_SQL_HOST', '192.168.7.23'),
             'port' => env('DB_SQL_PORT', '1433'),

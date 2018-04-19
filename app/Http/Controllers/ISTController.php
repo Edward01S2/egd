@@ -30,20 +30,20 @@ class ISTController extends Controller
 
     public function create() {
 
-        $ticket_num = request('ticket_num');
+        if($ticket_num = request('ticket_num')) {
 
-        //Queries to get company info from Sedona Server
-        $svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first();
-        $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
-        $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
-        //dd($alarm);
+             //Queries to get company info from Sedona Server
+            $svc = DB::connection('sqlsrv_final')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first();
+            $bus = DB::connection('sqlsrv_final')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+            $alarm = DB::connection('sqlsrv_final')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+            //dd($alarm);
 
-        $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
-        $bus_name = trim($bus_tmp);
+            $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
+            $bus_name = trim($bus_tmp);
 
-        if ($ticket_num = request('ticket_num')) {
             return view('ist.create', compact('ticket_num', 'svc', 'bus', 'alarm', 'bus_name'));
         }
+
         else {
             return view('ist.create');
         }

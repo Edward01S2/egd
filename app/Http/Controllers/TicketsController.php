@@ -39,7 +39,7 @@ class TicketsController extends Controller
 
         $follow_options = array("None", "Debris", "Repair", "Other");
 
-        return array($zone_options, $key_options, $ener_options, $feed_options, $veg_options, $qual_options, $follow_options) ;
+        return array($zone_options, $key_options, $ener_options, $feed_options, $veg_options, $qual_options, $follow_options);
     }
 
     public function index() {
