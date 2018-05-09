@@ -16,16 +16,19 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ticket_num');
+            $table->date('ticket_created')->nullable();
             $table->date('visit_date')->nullable();
             $table->string('acct_num')->nullable();
             $table->time('arrive_time')->nullable();
             $table->string('serv_tech')->nullable();
             $table->time('depart_time')->nullable();
             $table->string('cust_name')->nullable();
+            $table->string('cust_num')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('contact')->nullable();
             $table->string('phone')->nullable();
+            $table->integer('sq_ft')->nullable();
             $table->text('svc_reason')->nullable();
             $table->text('corr_action')->nullable();
             $table->text('rec_prev')->nullable();

@@ -738,6 +738,9 @@
         <hr class="mb-4">
         <input type="hidden" name="ticket_type" value="{{ $ticket_type or '' }}"/>
         <input type="hidden" name="tt" value="Service"/>
+        <input type="hidden" name="sq_ft" value="{{ $sq_ft->footage or '0' }}"/>
+        <input type="hidden" name="ticket_created" value="{{ $svc->Creation_Date or '' }}"/>
+        <input type="hidden" name="cust_num" value="{{ $cust_num->Customer_Number or '' }}"/>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
         </form>
 

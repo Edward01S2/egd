@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Storage;
 
-class Vegetation extends Mailable
+class Herbicide extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,7 @@ class Vegetation extends Mailable
      */
     public function build()
     {
+        
         $ticknum = $this->ticket->ticket_num;
         $store = '/public/' . $ticknum . '/pics/';
 
@@ -40,15 +41,24 @@ class Vegetation extends Mailable
             $path = storage_path('app/public/' . $ticknum . '/' . $ticknum . '_sv.pdf');
         }
 
+        $sq_ft = $this->ticket->sq_ft;
+        if($sq_ft == 0) {
+            $herb = 'Square footage could not be determined.';
+        }
+        else if($sq_ft < 5000 && $sq_ft >= 1) {
+            $herb = 1;
+        }
+        else {
+            $herb = 2;
+        }
+
         //dd($ticket);
-        return $this->view('emails.vegetation')
-            ->subject('CNR Request - Cust. #' . $this->ticket->cust_num)
+        return $this->view('emails.herbicide')
+            ->subject('Herbicide Request - Cust. #' . $this->ticket->cust_num)
             ->with([
                 'cust_num' => $this->ticket->cust_num,
-                'ticket_num' => $this->ticket->ticket_num,
-                'service_tech' => $this->ticket->serv_tech,
-                'creation_date' => $this->ticket->ticket_created,
-                'reason' => 'Vegetation',
+                'herb' => $herb,
+                'site_contact' => $this->ticket->contact,
             ])
             ->attach($path)
             ;

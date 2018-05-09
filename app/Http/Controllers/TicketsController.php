@@ -91,15 +91,17 @@ class TicketsController extends Controller
         $ticket_num = request('ticket_num');
 
         //Queries to get company info from Sedona Server
-        if($svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id')->where('Ticket_Number', $ticket_num)->first()) {
+        if($svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id', 'Customer_Id', 'Creation_Date')->where('Ticket_Number', $ticket_num)->first()) {
             $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
             $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+            $sq_ft = DB::connection('sqlsrv')->table('dbo.EGD_Footage')->select('footage')->where('customer_id', $svc->Customer_Id)->first();
+            $cust_num = DB::connection('sqlsrv')->table('dbo.AR_Customer')->select('Customer_Number')->where('customer_id', $svc->Customer_Id)->first();
 
             $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
             $bus_name = trim($bus_tmp);
 
             $ticket_type = request('ticket_type');
-            return view('tickets.create', compact('sel_options', 'ticket_num', 'ticket_type', 'svc', 'bus', 'alarm', 'bus_name'));
+            return view('tickets.create', compact('sel_options', 'ticket_num', 'ticket_type', 'svc', 'bus', 'alarm', 'bus_name', 'sq_ft', 'cust_num'));
         }
         else {
             return view('tickets.create', compact('sel_options'));
@@ -163,16 +165,19 @@ class TicketsController extends Controller
 
         Ticket::create([
             'ticket_num' => request('ticket_num'),
+            'ticket_created' => request('ticket_created'),
             'visit_date' => request('visit_date'),
             'acct_num' => request('acct_num'),
             'arrive_time' => request('arrive_time'),
             'serv_tech' => request('serv_tech'),
             'depart_time' => request('depart_time'),
             'cust_name' => request('cust_name'),
+            'cust_num' => request('cust_num'),
             'city' => request('city'),
             'state' => request('state'),
             'contact' => request('contact'),
             'phone' => request('phone'),
+            'sq_ft' => request('sq_ft'),
             'svc_reason' => request('svc_reason'),
             'corr_action' => request('corr_action'),
             'rec_prev' => request('rec_prev'),
