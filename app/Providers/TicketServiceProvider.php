@@ -64,11 +64,11 @@ class TicketServiceProvider extends ServiceProvider
                 // });
                 
                 //CNR email notification
-                Mail::to('eshannon@afterhoursupgrades.com')
+                Mail::to('customerservice@electricguarddog.com')
                     ->send( new Vegetation($ticket));
 
                 //Herbicide email notification
-                Mail::to('eshannon@afterhoursupgrades.com')
+                Mail::to('customerservice@electricguardddog.com')
                 ->send( new Herbicide($ticket));
             }
 
