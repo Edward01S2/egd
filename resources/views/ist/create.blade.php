@@ -91,14 +91,14 @@
         <div class="row">
             <div class="col-md-7 mb-3">
                 <label>Site Contact</label>
-                <input type="text" class="form-control" name="contact" placeholder="" value="" >
+                <input type="text" class="form-control" name="contact" placeholder="" value="{{ $contact->Contact_Name }}" >
                 <div class="invalid-feedback">
 
                 </div>
             </div>
             <div class="col-md-5 mb-3">
                 <label>Phone #</label>
-                <input type="text" class="form-control" name="phone" placeholder="" value="">
+                <input type="text" class="form-control" name="phone" placeholder="" value="{{ $contact->Phone }}">
                 <div class="invalid-feedback">
                     
                 </div>

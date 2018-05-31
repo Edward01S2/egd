@@ -77,6 +77,11 @@
     display: none;
 }
 
+#herbicide {
+    display: none;
+}
+  
+
 @media print {
 
     .nav-layout {

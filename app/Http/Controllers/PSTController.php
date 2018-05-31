@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PST;
 use Response;
+use DB;
 
 class PSTController extends Controller
 {
@@ -30,8 +31,20 @@ class PSTController extends Controller
 
         $sys_options = array("Initial Installation Check", "Add-on Check");
 
-        if ($ticket_num = request('ticket_num')) {
-            return view('pst.create', compact('ticket_num', 'sys_options'));
+        $ticket_num = request('ticket_num');
+
+        //Queries to get company info from Sedona Server
+        if($svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id', 'Customer_Id', 'Creation_Date')->where('Ticket_Number', $ticket_num)->first()) {
+            $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+            $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+            $sq_ft = DB::connection('sqlsrv')->table('dbo.EGD_Footage')->select('footage')->where('customer_id', $svc->Customer_Id)->first();
+            $cust_num = DB::connection('sqlsrv')->table('dbo.AR_Customer')->select('Customer_Number')->where('customer_id', $svc->Customer_Id)->first();
+
+            $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
+            $bus_name = trim($bus_tmp);
+
+            $ticket_type = request('ticket_type');
+            return view('pst.create', compact('ticket_num', 'ticket_type', 'svc', 'bus', 'alarm', 'bus_name', 'sq_ft', 'cust_num', 'sys_options'));
         }
         else {
             return view('pst.create', compact('sys_options'));
@@ -78,7 +91,7 @@ class PSTController extends Controller
         $ticket_num = request('ticket_num');
         $type = 'pst';
         
-        return redirect('/complete')->with(compact('ticket_num', 'type'));
+        return redirect('/tickets/create')->with(compact('ticket_num'));
     }
 
     public function download(PST $pst) {

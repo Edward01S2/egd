@@ -33,13 +33,13 @@ class TicketsController extends Controller
 
         $feed_options = array("Choose Feed", "Feed #4", "Feed #6", "Feed #8", "Feed #10", "Feed #11", "Feed #12");
 
-        $veg_options = array("Low", "Med", "High");
+        $yn_options = array("Yes", "No");
 
         $qual_options = array("Choose Rank", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
 
-        $follow_options = array("None", "Debris", "Repair", "Other");
+        $follow_options = array("None", "Vegetation", "Debris", "Repair", "Other");
 
-        return array($zone_options, $key_options, $ener_options, $feed_options, $veg_options, $qual_options, $follow_options);
+        return array($zone_options, $key_options, $ener_options, $feed_options, $yn_options, $qual_options, $follow_options);
     }
 
     public function index() {
@@ -88,11 +88,18 @@ class TicketsController extends Controller
     public function create() {
 
         $sel_options = $this->arrays();
-        $ticket_num = request('ticket_num');
-
+        if(session('ticket_num')) {
+            $ticket_num = session('ticket_num');
+        }
+        else {
+            $ticket_num = request('ticket_num');
+        }
+        
         //Queries to get company info from Sedona Server
         if($svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id', 'Customer_Id', 'Creation_Date')->where('Ticket_Number', $ticket_num)->first()) {
             $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+            $site_contact = DB::connection('sqlsrv')->table('dbo.AR_Site_Contact')->select('Contact_Id')->where('Site_Id', $svc->Customer_Site_Id)->latest('Site_Contact_Id')->first();
+            $contact = DB::connection('sqlsrv')->table('dbo.AR_Customer_Contact')->select('Contact_Name', 'Phone')->where('Customer_Contact_Id', $site_contact->Contact_Id)->first();
             $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
             $sq_ft = DB::connection('sqlsrv')->table('dbo.EGD_Footage')->select('footage')->where('customer_id', $svc->Customer_Id)->first();
             $cust_num = DB::connection('sqlsrv')->table('dbo.AR_Customer')->select('Customer_Number')->where('customer_id', $svc->Customer_Id)->first();
@@ -101,7 +108,7 @@ class TicketsController extends Controller
             $bus_name = trim($bus_tmp);
 
             $ticket_type = request('ticket_type');
-            return view('tickets.create', compact('sel_options', 'ticket_num', 'ticket_type', 'svc', 'bus', 'alarm', 'bus_name', 'sq_ft', 'cust_num'));
+            return view('tickets.create', compact('sel_options', 'ticket_num', 'ticket_type', 'svc', 'bus', 'alarm', 'bus_name', 'sq_ft', 'cust_num', 'contact'));
         }
         else {
             return view('tickets.create', compact('sel_options'));

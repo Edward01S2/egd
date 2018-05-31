@@ -8,6 +8,7 @@ use File;
 use Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use DB;
 
 class ExposureController extends Controller
 {
@@ -29,11 +30,25 @@ class ExposureController extends Controller
 
     public function create() {
 
-        if ($ticket_num = request('ticket_num')) {
-            return view('exposures.create', compact('ticket_num'));
+        $ticket_num = request('ticket_num');
+
+        //Queries to get company info from Sedona Server
+        if($svc = DB::connection('sqlsrv')->table('dbo.SV_Service_Ticket')->select('Ticket_Number', 'Customer_Site_Id', 'Customer_Id', 'Creation_Date')->where('Ticket_Number', $ticket_num)->first()) {
+            $bus = DB::connection('sqlsrv')->table('dbo.AR_Customer_Site')->select('Business_Name', 'GE1_Description', 'GE2_Short')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+            $site_contact = DB::connection('sqlsrv')->table('dbo.AR_Site_Contact')->select('Contact_Id')->where('Site_Id', $svc->Customer_Site_Id)->latest('Site_Contact_Id')->first();
+            $contact = DB::connection('sqlsrv')->table('dbo.AR_Customer_Contact')->select('Contact_Name', 'Phone')->where('Customer_Contact_Id', $site_contact->Contact_Id)->first();
+            $alarm = DB::connection('sqlsrv')->table('dbo.AR_Customer_System')->select('Alarm_Account')->where('Customer_Site_Id', $svc->Customer_Site_Id)->first();
+            $sq_ft = DB::connection('sqlsrv')->table('dbo.EGD_Footage')->select('footage')->where('customer_id', $svc->Customer_Id)->first();
+            $cust_num = DB::connection('sqlsrv')->table('dbo.AR_Customer')->select('Customer_Number')->where('customer_id', $svc->Customer_Id)->first();
+
+            $bus_tmp = substr($bus->Business_Name, 0, strpos($bus->Business_Name, "*"));
+            $bus_name = trim($bus_tmp);
+
+            $ticket_type = request('ticket_type');
+            return view('exposures.create', compact('ticket_num', 'ticket_type', 'svc', 'bus', 'alarm', 'bus_name', 'sq_ft', 'cust_num', 'sys_options', 'contact'));
         }
         else {
-            return view('exposures.create');
+            return view('exposures.create', compact('sys_options'));
         }
     }
 
@@ -91,7 +106,7 @@ class ExposureController extends Controller
         $ticket_num = request('ticket_num');
         $type = 'exposure';
         
-        return redirect('/complete')->with(compact('ticket_num', 'type'));
+        return redirect('/tickets/create')->with(compact('ticket_num'));
     }
 
     public function download(Exposure $expo) {

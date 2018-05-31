@@ -18,7 +18,7 @@
             <div class="col">
                 <div class="mb-3">
                     <label for="ticket_num">Ticket #</label>
-                <input type="text" class="form-control" name="ticket_num" placeholder="" value="{{ $ticket_num or ' ' }}" >
+                    <input type="text" class="form-control" name="ticket_num" placeholder="" value="{{ $ticket_num or '' }}" >
                     <div class="invalid-feedback">
                         Ticket # is required.
                     </div>
@@ -92,14 +92,14 @@
         <div class="row">
             <div class="col-md-4 mb-3">
                 <label>Site Contact</label>
-                <input type="text" class="form-control" name="contact" placeholder="" value="" >
+            <input type="text" class="form-control" name="contact" placeholder="" value="{{ $contact->Contact_Name }}" >
                 <div class="invalid-feedback">
 
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <label>Phone #</label>
-                <input type="text" class="form-control" name="phone" placeholder="" value="">
+                <input type="text" class="form-control" name="phone" placeholder="" value="{{ $contact->Phone }}">
                 <div class="invalid-feedback">
                     
                 </div>
@@ -136,7 +136,7 @@
 
         <div class="row">
 
-            <div class="col">
+            {{-- <div class="col">
                 <div class="text-center mb-3"><b>Description</b></div>
                 <label class="col-4 col-form-label mb-3">Zone 1</label>
                 {{ Form::select('zone1', $sel_options[0], null, ['class'=> 'col-7 custom-select']) }}
@@ -170,16 +170,49 @@
 
                 <label class="col-4 col-form-label mb-3">Key #</label>
                 {{ Form::select('zone9', $sel_options[1], null, ['class'=> 'col-7 custom-select']) }}    
-            </div>
+            </div> --}}
 
         </div>
 
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <label>Vegetation</label>
-                {{ Form::select('vegetation', $sel_options[4], null, ['class'=> 'custom-select form-control', 'id'=> 'vegetation']) }}    
+        <div class="row no-gutters mb-3">
+
+            <div class="col-md-1 my-auto mr-4">
+                <p class="m-0 text-center"><b>Batteries</b></p>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4">
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <label class="col-4 col-form-label">Type</label>
+                        {{ Form::select('zone7', ['6' => '6v', '12' => '12v'], null, ['class'=> 'col-7 custom-select align-top']) }}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row m-0">
+                            <label class="col-form-label col-2 mr-3" for="batt_num">#</label>
+                                <input type="text" class="form-control col-7" name="batt_num" placeholder="" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 my-auto">
+                <p class="m-0 text-center"><b>Solar Panels</b></p>
+            </div>
+            <div class="col-md-4">
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <label class="col-4 col-form-label">Watt</label>
+                        {{ Form::select('zone7', ['6' => '60w', '12' => '120w'], null, ['class'=> 'col-7 custom-select align-top']) }}
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row m-0">
+                            <label class="col-form-label col-2 mr-3" for="batt_num">#</label>
+                                <input type="text" class="form-control col-7" name="batt_num" placeholder="" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- <div class="col-md-4 mb-3">
                 <label># Batteries:</label>
                 <input type="text" class="form-control" name="batt_num" placeholder="" value="">
                 <div class="invalid-feedback">
@@ -192,17 +225,10 @@
                 <div class="invalid-feedback">
                     
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="row">
-            <div class="col-md-4 mb-3" id="site-container">
-                <div class="custom-control custom-checkbox">
-                    <input type="hidden" name="site_arm" value="0">
-                    {{ Form::checkbox('site_arm', '1', null, ['class' => 'custom-control-input', 'id' => 'site_arm']) }}
-                    <label class="custom-control-label" for="site_arm">Can the site arm?</label>
-                </div>
-            </div>
             <div class="col-md-4 mb-3">
                 <div class="custom-control custom-checkbox">
                     <input type="hidden" name="sign60" value="0">
@@ -221,6 +247,32 @@
 
         <div class="row">
             <div class="col-md-4 mb-3">
+                <p><b>Customer Not Ready:</b></p>
+                <div class="form-check form-check-inline">
+                    <input type="hidden" name="vegetation" value="0">
+                    {{ Form::checkbox('vegetation', '1', null, ['class' => 'form-check-input', 'id' => 'vegetation']) }}
+                    <label class="form-check-label" for="vegetation">Vegetation</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="hidden" name="debris" value="0">
+                    {{ Form::checkbox('debris', '1', null, ['class' => 'form-check-input', 'id' => 'debris']) }}
+                    <label class="form-check-label" for="debris">Debris</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="hidden" name="repair" value="0">
+                    {{ Form::checkbox('repair', '1', null, ['class' => 'form-check-input', 'id' => 'repair']) }}
+                    <label class="form-check-label" for="repair">Repair</label>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3" id="herbicide">
+                <p>Herbicide</p>
+                <div class="form-check form-check-inline">
+                    <input type="hidden" name="herbicide" value="0">
+                    {{ Form::checkbox('herbicide', '1', null, ['class' => 'form-check-input', 'id' => 'herbicide_check']) }}
+                    <label class="form-check-label" for="herbicide">Send Herbicide?</label>
+                </div>
+            </div>
+            {{-- <div class="col-md-4 mb-3">
                 <label>Follow-up needed?</label>
                 {{ Form::select('followup', $sel_options[6], null, ['class'=> 'custom-select form-control', 'id'=> 'followup']) }}    
             </div>
@@ -228,9 +280,13 @@
                 <label>If other, please explain:</label>
                 <input type="text" class="form-control" name="other" placeholder="" value="">   
             </div>
+            <div class="col-md-4 mb-3" id="herbicide">
+                <label>Herbicide needed?</label>
+                {{ Form::select('herbicide', $sel_options[4], null, ['class'=> 'custom-select form-control', 'id'=> 'herbicide_select']) }}    
+            </div> --}}
         </div>
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-12">
                 <table class="table table-sm">
                     <tbody>
@@ -276,7 +332,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> --}}
 
         <hr class=""/>
             <h4>SYSTEMS TEST</h4>
@@ -758,13 +814,9 @@
     var canvas = document.getElementById('signature-pad');
 
     if(canvas) {
-        // Adjust canvas coordinate space taking into account pixel ratio,
-        // to make it look crisp on mobile devices.
-        // This also causes canvas to be cleared.
+
         function resizeCanvas() {
-            // When zoomed out to less than 100%, for some very strange reason,
-            // some browsers report devicePixelRatio as less than 1
-            // and only part of the canvas is cleared then.
+
             var ratio =  Math.max(window.devicePixelRatio || 1, 1);
             canvas.width = canvas.offsetWidth * ratio;
             canvas.height = canvas.offsetHeight * ratio;
@@ -777,33 +829,6 @@
         var signaturePad = new SignaturePad(canvas, {
             backgroundColor: 'rgb(255, 255, 255)' // necessary for saving image as JPEG; can be removed is only saving as PNG or SVG
         });
-
-        // document.getElementById('save-png').addEventListener('click', function () {
-        //   if (signaturePad.isEmpty()) {
-        //     return alert("Please provide a signature first.");
-        //   }
-            
-        //   var data = signaturePad.toDataURL('image/png');
-        //   console.log(data);
-        //   window.open(data);
-        // });
-
-
-        //   var data = signaturePad.toDataURL('image/jpeg');
-        //   console.log(data);
-        //   window.open(data);
-        // });
-
-        // document.getElementById('save-svg').addEventListener('click', function () {
-        //   if (signaturePad.isEmpty()) {
-        //     return alert("Please provide a signature first.");
-        //   }
-
-        //   var data = signaturePad.toDataURL('image/svg+xml');
-        //   console.log(data);
-        //   console.log(atob(data.split(',')[1]));
-        //   window.open(data);
-        // });
 
         document.getElementById('clear').addEventListener('click', function () {
             signaturePad.clear();
@@ -868,24 +893,14 @@ $('#form_ticket').submit(function (e) {
 });
 
 $(document).ready(function() {
-    $('#vegetation').change(function() {
-    var sel = $(this).val();
-    //console.log(sel);
-        if($(this).val() == 2) {
-            $('#site-container').show();
-        }
-        else {
-            $('#site-container').hide();
-        }
-    });
 
-    $('#followup').change(function() {
+    $('#vegetation').change(function() {
     //console.log(sel);
-        if($(this).val() == 3) {
-            $('#follow-container').show();
+        if(this.checked) {
+            $('#herbicide').show();
         }
         else {
-            $('#follow-container').hide();
+            $('#herbicide').hide();
         }
     });
 });
